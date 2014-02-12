@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the HCBF Sponsors feature.
+ */
+
+include_once 'hcbf_sponsors.features.inc';

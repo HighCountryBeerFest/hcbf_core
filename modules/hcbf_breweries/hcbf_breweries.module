@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the HCBF Breweries feature.
+ */
+
+include_once 'hcbf_breweries.features.inc';
