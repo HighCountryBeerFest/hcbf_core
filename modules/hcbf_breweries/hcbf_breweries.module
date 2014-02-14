@@ -5,3 +5,35 @@
  */
 
 include_once 'hcbf_breweries.features.inc';
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_breweries_menu() {
+  $items = array();
+
+  $items['breweries'] = array(
+    'title' => t('Breweries'),
+    'page callback' => 'hcbf_breweries',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_breweries.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_breweries_theme() {
+  $themes = array();
+
+  $themes['hcbf_breweries'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_breweries',
+  );
+
+  return $themes;
+}
+

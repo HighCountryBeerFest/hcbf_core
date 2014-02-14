@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Code for the HCBF Volunteers feature.
+ */
+
+include_once 'hcbf_volunteers.features.inc';
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_volunteers_menu() {
+  $items = array();
+
+  $items['volunteer'] = array(
+    'title' => t('Volunteer'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hcbf_volunteer_form'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_volunteers.forms.inc'
+  );
+
+  $items['admin/config/hcbf_volunteers'] = array(
+    'title' => t('HCBF Volunteer settings'),
+    'descrption' => t('Settings for the volunteer section of the site.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hcbf_volunteer_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'hcbf_volunteers.admin.inc'
+  );
+
+  return $items;
+}
+

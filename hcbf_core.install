@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * The install process for the High Country Craft Food and Beverage Festival's website.
+ */
+
+/**
+ * Implements hook_install()
+ */
+function hcbf_core_install() {
+  // If the site_frontpage variable is still set to the default let's go ahead
+  // and make it /home.
+  if (variable_get('site_frontpage') == 'node') {
+    variable_set('site_frontpage', 'home');
+  }
+}
+
+/**
+ * Implements hook_uninstall()
+ */
+function hcbf_core_uninstall() {
+}
+

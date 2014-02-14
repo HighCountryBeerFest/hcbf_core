@@ -26,22 +26,6 @@ function hcbf_core_menu() {
     'file' => 'hcbf_core.pages.inc'
   );
 
-  $items['breweries'] = array(
-    'title' => t('Breweries'),
-    'page callback' => 'hcbf_breweries',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-    'file' => 'hcbf_core.pages.inc'
-  );
-
-  $items['sponsors'] = array(
-    'title' => t('Sponsors'),
-    'page callback' => 'hcbf_sponsors',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-    'file' => 'hcbf_core.pages.inc'
-  );
-
   return $items;
 }
 
@@ -59,16 +43,6 @@ function hcbf_core_theme() {
   $themes['hcbf_about'] = array(
     'variables' => array(),
     'template' => 'templates/hcbf_about',
-  );
-
-  $themes['hcbf_breweries'] = array(
-    'variables' => array(),
-    'template' => 'templates/hcbf_breweries',
-  );
-
-  $themes['hcbf_sponsors'] = array(
-    'variables' => array(),
-    'template' => 'templates/hcbf_sponsors',
   );
 
   return $themes;
