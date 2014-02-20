@@ -20,6 +20,13 @@ function hcbf_volunteer_settings_form() {
     ),
   );
 
+  $form['hcbf_volunteer_intro'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Intro message'),
+    '#default_value' => variable_get('hcbf_volunteer_intro', ''),
+    '#description' => t('This message displays on the top of the Volunteer form.')
+  );
+
   return system_settings_form($form);
 }
 

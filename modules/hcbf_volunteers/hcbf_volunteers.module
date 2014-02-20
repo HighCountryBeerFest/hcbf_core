@@ -7,6 +7,19 @@
 include_once 'hcbf_volunteers.features.inc';
 
 /**
+ * Implements hook_permission()
+ */
+function hcbf_volunteers_permission() {
+  $permissions = array();
+
+  $permissions['manage volunteers'] = array(
+    'title' => t('Manage volunteers')
+  );
+
+  return $permissions;
+}
+
+/**
  * Implements hook_menu()
  */
 function hcbf_volunteers_menu() {
@@ -21,7 +34,15 @@ function hcbf_volunteers_menu() {
     'file' => 'hcbf_volunteers.forms.inc'
   );
 
-  $items['admin/config/hcbf_volunteers'] = array(
+  $items['volunteer/manage'] = array(
+    'title' => t('Manage volunteers'),
+    'page callback' => 'hcbf_volunteer_manage',
+    'access arguments' => array('manage volunteers'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_volunteers.pages.inc'
+  );
+
+  $items['admin/config/hcbf/volunteers'] = array(
     'title' => t('HCBF Volunteer settings'),
     'descrption' => t('Settings for the volunteer section of the site.'),
     'page callback' => 'drupal_get_form',
@@ -32,5 +53,69 @@ function hcbf_volunteers_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_volunteers_theme() {
+  $themes = array();
+
+  $themes['hcbf_volunteer_manage'] = array(
+    'variables' => array('volunteers' => NULL),
+    'template' => 'templates/hcbf_volunteer_manage',
+  );
+
+  return $themes;
+}
+
+/**
+ * Implements hook_block_info()
+ */
+function hcbf_volunteers_block_info() {
+  $blocks = array();
+
+  $blocks['hcbf_volunteer_manage_menu'] = array(
+    'info' => t('Volunteer Management Menu'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function hcbf_volunteers_block_view($delta='') {
+  switch ($delta) {
+    case 'hcbf_volunteer_manage_menu':
+      if (user_access('manage volunteers') && strpos(current_path(), 'volunteer') !== false) {
+        $block['content'] = hcbf_volunteer_manage_menu_content();
+      }
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Block callback for the Volunteer Managemnet block
+ */
+function hcbf_volunteer_manage_menu_content() {
+  $manage_class = array();
+  if (current_path() == 'volunteer/manage') {
+    $manage_class[] = 'active';
+  }
+
+  $items = array(
+    array(
+      'data' => l(t('Manage volunteers'), 'volunteer/manage'),
+      'class' => $manage_class,
+    ),
+  );
+
+  return array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#attributes' => array('class' => array('nav', 'nav-stacked')),
+  );
 }
 
