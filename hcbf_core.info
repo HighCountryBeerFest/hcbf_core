@@ -6,3 +6,4 @@ package = HCBF
 dependencies[] = hcbf_breweries
 dependencies[] = hcbf_sponsors
 dependencies[] = hcbf_volunteers
+dependencies[] = hcbf_home

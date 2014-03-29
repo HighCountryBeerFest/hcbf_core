@@ -16,28 +16,17 @@ function hcbf_volunteer_manage() {
 
   $result = $query->execute();
   $volunteer_nids = array_keys($result['node']);
-  $volunteer_nodes = node_load_multiple($volunteer_nids);
 
   $volunteers = array();
-  foreach ($volunteer_nodes as $volunteer) {
-    $name_field = field_get_items('node', $volunteer, 'field_hcbf_volunteer_name');
-    $name_value = field_view_value('node', $volunteer, 'field_hcbf_volunteer_name', $name_field[0]);
-    $email_field = field_get_items('node', $volunteer, 'field_hcbf_volunteer_email');
-    $phone_field = field_get_items('node', $volunteer, 'field_hcbf_volunteer_phone');
-    $phone_value = field_view_value('node', $volunteer, 'field_hcbf_volunteer_phone', $phone_field[0]);
-
-    $job_field = field_get_items('node', $volunteer, 'field_hcbf_volunteer_job');
-    $job_value = field_view_value('node', $volunteer, 'field_hcbf_volunteer_job', $job_field[0]);
-
-    $shift_field = field_get_items('node', $volunteer, 'field_hcbf_volunteer_shift');
-    $shift_value = field_view_value('node', $volunteer, 'field_hcbf_volunteer_shift', $shift_field[0]);
+  foreach ($volunteer_nids as $volunteer) {
+    $volunteer_entity = entity_metadata_wrapper('node', $volunteer);
 
     $approved = array(
       '#type' => 'markup',
       '#markup' => 'Accepted',
     );
     $row_class = 'success';
-    if ($volunteer->field_hcbf_volunteer_accepted['und'][0]['value'] == 'no') {
+    if ($volunteer_entity->field_hcbf_volunteer_accepted->value() == 'no') {
       $approved['#markup'] = 'Not accepted';
       $row_class = 'danger';
     }
@@ -45,41 +34,41 @@ function hcbf_volunteer_manage() {
     $volunteers[] = array(
       'name' => array(
         '#type' => 'markup',
-        '#markup' => render($name_value),
+        '#markup' => $volunteer_entity->label(),
       ),
       'phone' => array(
         '#type' => 'markup',
-        '#markup' => render($phone_value),
-        '#prefix' => '<a href="tel:' . render($phone_value) . '">',
+        '#markup' => $volunteer_entity->field_hcbf_volunteer_phone->value(),
+        '#prefix' => '<a href="tel:' . $volunteer_entity->field_hcbf_volunteer_phone->value() . '">',
         '#suffix' => '</a>'
       ),
       'job' => array(
         '#type' => 'markup',
-        '#markup' => render($job_value),
+        '#markup' => $volunteer_entity->field_hcbf_volunteer_job->optionsList()[$volunteer_entity->field_hcbf_volunteer_job->value()],
       ),
       'shift' => array(
         '#type' => 'markup',
-        '#markup' => render($shift_value),
+        '#markup' => $volunteer_entity->field_hcbf_volunteer_shift->optionsList()[$volunteer_entity->field_hcbf_volunteer_shift->value()],
       ),
       'approved' => $approved,
       'email' => array(
         '#type' => 'markup',
-        '#markup' => l(t('Email'), 'mailto:' . $email_field[0]['email'], array('absolute' => TRUE)),
+        '#markup' => l(t('Email'), 'mailto:' . $volunteer_entity->field_hcbf_volunteer_email->value(), array('absolute' => TRUE)),
         '#prefix' => '<span class="glyphicon glyphicon-inbox"></span> ',
       ),
       'view' => array(
         '#type' => 'markup',
-        '#markup' => l(t('View'), 'node/' . $volunteer->nid),
+        '#markup' => l(t('View'), 'node/' . $volunteer_entity->nid->value()),
         '#prefix' => '<span class="glyphicon glyphicon-search"></span> ',
       ),
       'edit' => array(
         '#type' => 'markup',
-        '#markup' => l(t('Edit'), 'node/' . $volunteer->nid . '/edit', array('query' => array('destination' => 'volunteer/manage'))),
+        '#markup' => l(t('Edit'), 'node/' . $volunteer_entity->nid->value() . '/edit', array('query' => array('destination' => 'volunteer/manage'))),
         '#prefix' => '<span class="glyphicon glyphicon-pencil"></span> ',
       ),
       'delete' => array(
         '#type' => 'markup',
-        '#markup' => l(t('Delete'), 'node/' . $volunteer->nid . '/delete', array('query' => array('destination' => 'volunteer/manage'))),
+        '#markup' => l(t('Delete'), 'node/' . $volunteer_entity->nid->value() . '/delete', array('query' => array('destination' => 'volunteer/manage'))),
         '#prefix' => '<span class="glyphicon glyphicon-trash"></span> ',
       ),
       'row_class' => $row_class,

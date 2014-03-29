@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file
+ * The core module for the High Country Craft Food and Beverage Festival's website.
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_home_menu() {
+  $items = array();
+
+  $items['home'] = array(
+    'title' => t('Home'),
+    'page callback' => 'hcbf_home',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_home.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_home_theme() {
+  $themes = array();
+
+  $themes['hcbf_home'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_home',
+  );
+
+  return $themes;
+}
+
+/**
+ * Implements hook_libraries_info()
+ */
+function hcbf_home_libraries_info() {
+  $libraries = array();
+
+  $libraries['skrollr'] = array(
+    'name' => 'Skrollr',
+    'vendor url' => 'http://prinzhorn.github.io/skrollr/',
+    'download url' => 'https://github.com/Prinzhorn/skrollr/tree/0.6.21',
+    'version' => '0.6.21',
+    'version callback' => 'hcbf_home_skrollr_version',
+    'files' => array(
+      'js' => array('dist/skrollr.min.js'),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Workaround for loading the library if you don't provide a 'version argument'
+ * or 'version callback' in the hook_libraries_info();
+ */
+function hcbf_home_skrollr_version() {
+  return TRUE;
+}
+

@@ -7,6 +7,19 @@
 include_once 'hcbf_breweries.features.inc';
 
 /**
+ * Implements hook_permission()
+ */
+function hcbf_breweries_permission() {
+  $permissions = array();
+
+  $permissions['manage breweries'] = array(
+    'title' => t('Manage breweries')
+  );
+
+  return $permissions;
+}
+
+/**
  * Implements hook_menu()
  */
 function hcbf_breweries_menu() {
@@ -16,8 +29,31 @@ function hcbf_breweries_menu() {
     'title' => t('Breweries'),
     'page callback' => 'hcbf_breweries',
     'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
     'file' => 'hcbf_breweries.pages.inc'
+  );
+
+  $items['breweries/register'] = array(
+    'title' => t('Register as a brewery'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hcbf_brewery_registration_form'),
+    'access arguments' => array('access content'),
+    'file' => 'hcbf_breweries.forms.inc'
+  );
+
+  $items['breweries/manage'] = array(
+    'title' => t('Manage breweries'),
+    'page callback' => 'hcbf_breweries_manage',
+    'access arguments' => array('manage breweries'),
+    'file' => 'hcbf_breweries.pages.inc'
+  );
+
+  $items['breweries/settings'] = array(
+    'title' => t('Breweries settings'),
+    'descrption' => t('Settings for the breweries section of the site.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hcbf_breweries_settings_form'),
+    'access arguments' => array('manage breweries'),
+    'file' => 'hcbf_breweries.forms.inc'
   );
 
   return $items;
@@ -30,8 +66,13 @@ function hcbf_breweries_theme() {
   $themes = array();
 
   $themes['hcbf_breweries'] = array(
-    'variables' => array(),
+    'variables' => array('breweries' => NULL),
     'template' => 'templates/hcbf_breweries',
+  );
+
+  $themes['hcbf_breweries_manage'] = array(
+    'variables' => array('breweries' => NULL),
+    'template' => 'templates/hcbf_breweries_manage',
   );
 
   return $themes;

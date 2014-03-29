@@ -140,9 +140,10 @@ function hcbf_volunteers_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Setup',
-        1 => 'Pourer',
-        2 => 'Other',
+        0 => '10:00 am - 12:00 am Set-up',
+        2 => '12:00 am - 2:00 pm Set-up',
+        3 => '2:30 pm - 5:00 pm Pour beer',
+        4 => '5:00 pm - 7:00 pm Pour beer',
       ),
       'allowed_values_function' => '',
     ),
