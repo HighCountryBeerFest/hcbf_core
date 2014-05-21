@@ -54,7 +54,7 @@ function hcbf_volunteer_manage() {
       'email' => array(
         '#type' => 'markup',
         '#markup' => l(t('Email'), 'mailto:' . $volunteer_entity->field_hcbf_volunteer_email->value(), array('absolute' => TRUE)),
-        '#prefix' => '<span class="glyphicon glyphicon-inbox"></span> ',
+        '#prefix' => '<i class="fa fa-inbox"></i> ',
       ),
       'view' => array(
         '#type' => 'markup',

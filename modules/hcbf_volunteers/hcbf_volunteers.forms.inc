@@ -12,14 +12,22 @@ function hcbf_volunteer_form($form, &$form_state) {
   // Protect the form with honeypot
   honeypot_add_form_protection($form, $form_state, array('honeypot', 'time_restriction'));
 
-  $form = array();
-  $form['#attributes'] = array('role' => array('form'));
+  $form = array(
+    '#attributes' => array('role' => array('form')),
+    '#prefix' => '<div id="volunteer-register-wrapper" class="wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
+    '#suffix' => '</div></div></div></div>'
+  );
 
   if (variable_get('hcbf_volunteer_active', 0) == 1) {
     $form['info'] = array(
       '#markup' => variable_get('hcbf_volunteer_intro', 'Fill out this form to volunteer for the High Country Craft Food and Beverage Festival.'),
       '#prefix' => '<p>',
       '#suffix' => '</p>',
+    );
+
+    $form['volunteer_wrapper_open'] = array(
+      '#prefix' => '<div class="row">',
+      '#suffix' => '<div class="col-xs-12 col-md-6">',
     );
 
     // The form is open for submission
@@ -61,6 +69,11 @@ function hcbf_volunteer_form($form, &$form_state) {
       '#attributes' => array('placeholder' => array('6/19/1985')),
     );
 
+    $form['volunteer_wrapper_col_1_close'] = array(
+      '#prefix' => '</div>',
+      '#suffix' => '<div class="col-xs-12 col-md-6">',
+    );
+
     $form['other_info'] = array(
       '#type' => 'fieldset',
       '#title' => t('Other Information')
@@ -97,6 +110,11 @@ function hcbf_volunteer_form($form, &$form_state) {
       '#type' => 'textarea',
       '#title' => t('Additional information'),
       '#description' => t('Please describe your previous experience with other festivals, time limitations due to other responsibilities, and any additional information.'),
+    );
+
+    $form['volunteer_wrapper_col_2_close'] = array(
+      '#prefix' => '</div>',
+      '#suffix' => '</div>',
     );
 
     $form['terms'] = array(
@@ -158,7 +176,11 @@ function hcbf_volunteer_form_submit($form, &$form_state) {
  * Callback for the volunteer/settings form.
  */
 function hcbf_volunteer_settings_form() {
-  $form = array();
+  $form = array(
+    '#attributes' => array('role' => array('form')),
+    '#prefix' => '<div id="volunteer-register-wrapper" class="wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
+    '#suffix' => '</div></div></div></div>'
+  );
 
   $form['hcbf_volunteer_active'] = array(
     '#type' => 'radios',

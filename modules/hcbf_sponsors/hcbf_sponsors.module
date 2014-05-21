@@ -7,6 +7,27 @@
 include_once 'hcbf_sponsors.features.inc';
 
 /**
+ * Implements hook_permission()
+ */
+function hcbf_sponsors_permission() {
+  $permissions = array();
+
+  $permissions['manage sponsors'] = array(
+    'title' => t('Manage sponsors')
+  );
+
+  $permissions['access sponsors'] = array(
+    'title' => t('Access sponsors')
+  );
+
+  $permissions['access sponsors registration'] = array(
+    'title' => t('Access sponsors registration')
+  );
+
+  return $permissions;
+}
+
+/**
  * Implements hook_menu()
  */
 function hcbf_sponsors_menu() {
@@ -15,7 +36,7 @@ function hcbf_sponsors_menu() {
   $items['sponsors'] = array(
     'title' => t('Sponsors'),
     'page callback' => 'hcbf_sponsors',
-    'access arguments' => array('access content'),
+    'access arguments' => array('access sponsors'),
     'type' => MENU_CALLBACK,
     'file' => 'hcbf_sponsors.pages.inc'
   );

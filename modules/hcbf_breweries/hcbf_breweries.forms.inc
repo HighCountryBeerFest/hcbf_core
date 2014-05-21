@@ -12,8 +12,11 @@ function hcbf_brewery_registration_form($form, &$form_state) {
   // Protect the form with honeypot
   honeypot_add_form_protection($form, $form_state, array('honeypot', 'time_restriction'));
 
-  $form = array();
-  $form['#attributes'] = array('role' => array('form'));
+  $form = array(
+    '#attributes' => array('role' => array('form')),
+    '#prefix' => '<div id="brewery-register-wrapper" class="wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
+    '#suffix' => '</div></div></div></div>'
+  );
 
   if (variable_get('hcbf_breweries_active', 0) == 1) {
 
@@ -79,15 +82,12 @@ function hcbf_brewery_registration_form($form, &$form_state) {
 
     $form['contact_wrapper_open'] = array(
       '#prefix' => '<div class="row">',
-    );
-
-    $form['contact_wrapper_col_1_open'] = array(
-      '#prefix' => '<div class="col-xs-12 col-md-6">',
+      '#suffix' => '<div class="col-xs-12 col-md-6">',
     );
 
     $form['primary_contact_info'] = array(
       '#type' => 'fieldset',
-      '#title' => t('Primary contact person')
+      '#title' => '<span class="glyphicon glyphicon-user"></span> ' . t('Primary contact person')
     );
 
     $form['primary_contact_info']['info'] = array(
@@ -115,16 +115,13 @@ function hcbf_brewery_registration_form($form, &$form_state) {
     );
 
     $form['contact_wrapper_col_1_close'] = array(
-      '#suffix' => '</div>',
-    );
-
-    $form['contact_wrapper_col_2_open'] = array(
-      '#prefix' => '<div class="col-xs-12 col-md-6">',
+      '#prefix' => '</div>',
+      '#suffix' => '<div class="col-xs-12 col-md-6">',
     );
 
     $form['secondary_contact_info'] = array(
       '#type' => 'fieldset',
-      '#title' => t('Secondary contact person')
+      '#title' => '<span class="glyphicon glyphicon-user"></span> ' . t('Secondary contact person')
     );
     
     $form['secondary_contact_info']['info'] = array(
@@ -135,28 +132,24 @@ function hcbf_brewery_registration_form($form, &$form_state) {
 
     $form['secondary_contact_info']['secondary_contact_name'] = array(
       '#type' => 'textfield',
-      '#title' => t('Contact name'),
+      '#title' => t('Secondary contact name'),
       '#required' => TRUE,
     );
 
     $form['secondary_contact_info']['secondary_main_contact_phone'] = array(
       '#type' => 'textfield',
-      '#title' => t('Main phone number'),
+      '#title' => t('Secondary main phone number'),
       '#required' => TRUE,
     );
 
     $form['secondary_contact_info']['secondary_email_address'] = array(
       '#type' => 'textfield',
-      '#title' => t('Email address'),
+      '#title' => t('Secondary contact email address'),
       '#required' => TRUE,
     );
 
     $form['contact_wrapper_col_2_close'] = array(
-      '#suffix' => '</div>',
-    );
-
-
-    $form['contact_wrapper_close'] = array(
+      '#prefix' => '</div>',
       '#suffix' => '</div>',
     );
 
@@ -288,7 +281,11 @@ function hcbf_brewery_registration_form_submit($form, &$form_state) {
  * Callback for the breweries/settings form.
  */
 function hcbf_breweries_settings_form() {
-  $form = array();
+  $form = array(
+    '#attributes' => array('role' => array('form')),
+    '#prefix' => '<div id="volunteer-register-wrapper" class="wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
+    '#suffix' => '</div></div></div></div>'
+  );
 
   $form['hcbf_breweries_active'] = array(
     '#type' => 'radios',

@@ -1,40 +1,56 @@
-<section id="slide-1">
-  <div class="bcg"
-       data-center="background-position: 50% 0px;",
-       data-top-bottom="background-position: 50% -100px",
-       data-anchor-target="#slide-1">
-    <div class="row slide-container">
-      <div class="col-sm-12 hcbfContent"
-           data-center="opacity: 1;"
-           data-106-top="opacity: 0;"
-           data-anchor-top="#slide-1 h2">
-        <h2>Praesent posuere a urna sed ultrices. Duis sed ipsum semper orci consectetur pulvinar.</h2>
+
+<div id="meta-wrapper" class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="text-center">
+          <i class="fa fa-ticket fa-6x"></i>
+        </div>
+        <h1 class="text-center">Buy Tickets</h1>
+        <p class="lead text-center">Tickets will be on sale soon, check back for dates!</p>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="text-center">
+          <i class="fa fa-beer fa-6x"></i>
+        </div>
+        <h1 class="text-center">The Festivities</h1>
+        <p class="lead text-center">Join us at the High Country Fair Grounds on Saturday, August 30, 2014 from 3:00pm to 7:00 pm to try a varity of craft beer, craft food, educational seminars, and live music.</p>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="text-center">
+          <i class="fa fa-users fa-6x"></i>
+        </div>
+        <h1 class="text-center">Get involved</h1>
+        <p class="lead text-center">We're looking for volunteers to help us put on the 7<sup>th</sup> annual High Country Beer Fest.</p>
+        <div class="text-center">
+          <p>
+            <a class="btn btn-success btn-lg" href="/volunteer" role="button">
+             <i class="fa fa-thumbs-up"></i> I'd like to get involved
+            </a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="slide-2">
-  <div class="bcg"
-       data-center="background-position: 50% 0px;",
-       data-top-bottom="background-position: 50% -100px",
-       data-anchor-target="#slide-2">
-    <div class="row slide-container dark">
-      <div class="col-sm-12"
-           data-center="opacity: 1;"
-           data-106-top="opacity: 0;"
-           data-anchor-top="#slide-2 h2">
-        <h2>Duis sed ipsum semper orci consectetur pulvinar.</h2>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="row">
-  <div class="col-sm-6">
-    <p>This is left side of the homepage</p>
-  </div>
-  <div class="col-sm-6">
-    <p>This is the right side of the homepage</p>
   </div>
 </div>
+    
+<hr />
+
+<div id="about-wrapper" class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-7">
+        <h1 class="heading">About the High Country Beer Fest</h1>
+        <p class="lead">The High Country Beer Fest is a celebration of craft beer from around the region and the world. Come sample outstanding beers and delicious food in the beautiful high country of North Carolina. Educational seminars will cover aspects of beer tasting, brewing, and food pairing.</p>
+      </div>
+      <div class="col-xs-12 col-md-5">
+        <h1 class="heading">Want to serve your beer?</h1>
+        <p class="lead">We're looking for craft breweries who want to participate in this year's High Country Beer Fest.</p>
+        <p>
+          <a class="btn btn-success btn-lg" href="/breweries/register" role="button">I'd like to register my brewery</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

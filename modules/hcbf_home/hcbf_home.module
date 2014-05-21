@@ -28,38 +28,12 @@ function hcbf_home_theme() {
   $themes = array();
 
   $themes['hcbf_home'] = array(
-    'variables' => array(),
+    'variables' => array(
+      'wheat_image' => NULL,
+    ),
     'template' => 'templates/hcbf_home',
   );
 
   return $themes;
-}
-
-/**
- * Implements hook_libraries_info()
- */
-function hcbf_home_libraries_info() {
-  $libraries = array();
-
-  $libraries['skrollr'] = array(
-    'name' => 'Skrollr',
-    'vendor url' => 'http://prinzhorn.github.io/skrollr/',
-    'download url' => 'https://github.com/Prinzhorn/skrollr/tree/0.6.21',
-    'version' => '0.6.21',
-    'version callback' => 'hcbf_home_skrollr_version',
-    'files' => array(
-      'js' => array('dist/skrollr.min.js'),
-    ),
-  );
-
-  return $libraries;
-}
-
-/**
- * Workaround for loading the library if you don't provide a 'version argument'
- * or 'version callback' in the hook_libraries_info();
- */
-function hcbf_home_skrollr_version() {
-  return TRUE;
 }
 
