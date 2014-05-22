@@ -14,7 +14,7 @@ function hcbf_volunteer_form($form, &$form_state) {
 
   $form = array(
     '#attributes' => array('role' => array('form')),
-    '#prefix' => '<div id="volunteer-register-wrapper" class="wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
+    '#prefix' => '<div class="wrapper form-wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
     '#suffix' => '</div></div></div></div>'
   );
 
@@ -115,12 +115,6 @@ function hcbf_volunteer_form($form, &$form_state) {
     $form['volunteer_wrapper_col_2_close'] = array(
       '#prefix' => '</div>',
       '#suffix' => '</div>',
-    );
-
-    $form['terms'] = array(
-      '#markup' => variable_get('hcbf_volunteer_terms', 'By submitting this form you are agreeing to terms that will be expanded on.'),
-      '#prefix' => '<p>',
-      '#suffix' => '</p>',
     );
 
     $form['submit'] = array(

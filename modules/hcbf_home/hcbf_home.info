@@ -1,5 +1,5 @@
-name = HCBF Home
-description = A homepage for the High Country Craft Food and Beverage Festival
+name = High Country Beer Fest Home
+description = A homepage for the High Country Beer Fest
 core = 7.x
 version = 7.x-1.x
 package = HCBF

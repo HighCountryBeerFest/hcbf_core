@@ -17,7 +17,7 @@ function hcbf_volunteers_permission() {
   );
 
   $permissions['access volunteer registration'] = array(
-    'title' => t('Manage volunteer registration')
+    'title' => t('Access volunteer registration')
   );
 
   return $permissions;
@@ -30,7 +30,7 @@ function hcbf_volunteers_menu() {
   $items = array();
 
   $items['volunteer'] = array(
-    'title' => t('Volunteer'),
+    'title' => t('Get Involved'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('hcbf_volunteer_form'),
     'access arguments' => array('access volunteer registration'),

@@ -1,5 +1,5 @@
-name = HCBF Volunteers
-description = Volunteer content types for the High Country Food and Beverage Festival's websites.
+name = High Country Beer Fest Volunteers
+description = Volunteer content types for the High Country Beer Fest's websites.
 core = 7.x
 package = hcbf feaures
 version = 7.x-1.0

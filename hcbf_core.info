@@ -1,5 +1,5 @@
-name = HCBF Core
-description = A core module for the High Country Craft Food and Beverage Festival's website.
+name = High Country Beer Fest Core
+description = A core module for the High Country Beer Fest's website.
 core = 7.x
 version = 7.x-1.x
 package = HCBF
