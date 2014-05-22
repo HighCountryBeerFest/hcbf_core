@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-4">
         <div class="text-center">
-          <i class="fa fa-ticket fa-5x"></i>
+          <i class="icon fa fa-ticket fa-5x"></i>
         </div>
         <div class="page-header">
           <h1 class="text-center">Buy Tickets</h1>
@@ -29,7 +29,7 @@
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="text-center">
-          <i class="fa fa-beer fa-5x"></i>
+          <i class="icon fa fa-beer fa-5x"></i>
         </div>
         <div class="page-header">
           <h1 class="text-center">The Festivities</h1>
@@ -38,7 +38,7 @@
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="text-center">
-          <i class="fa fa-users fa-5x"></i>
+          <i class="icon fa fa-users fa-5x"></i>
         </div>
         <div class="page-header">
           <h1 class="text-center">Get involved</h1>
