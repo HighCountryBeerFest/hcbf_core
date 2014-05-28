@@ -133,19 +133,16 @@ function hcbf_brewery_registration_form($form, &$form_state) {
     $form['secondary_contact_info']['secondary_contact_name'] = array(
       '#type' => 'textfield',
       '#title' => t('Secondary contact name'),
-      '#required' => TRUE,
     );
 
     $form['secondary_contact_info']['secondary_main_contact_phone'] = array(
       '#type' => 'textfield',
       '#title' => t('Secondary main phone number'),
-      '#required' => TRUE,
     );
 
     $form['secondary_contact_info']['secondary_email_address'] = array(
       '#type' => 'textfield',
       '#title' => t('Secondary contact email address'),
-      '#required' => TRUE,
     );
 
     $form['contact_wrapper_col_2_close'] = array(
@@ -193,6 +190,12 @@ function hcbf_brewery_registration_form($form, &$form_state) {
       '#default_value' => 0,
     );
 
+    $form['product_info']['brewery_staff_names'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Names of staff'),
+      '#required' => FALSE,
+    );
+
     $form['product_info']['brewery_hotel'] = array(
       '#type' => 'radios',
       '#title' => t('Do you need a hotel room?'),
@@ -203,6 +206,29 @@ function hcbf_brewery_registration_form($form, &$form_state) {
         1 => t('Yes')
       ),
       '#default_value' => 0,
+    );
+
+    $form['product_info']['brewery_hotel_night'] = array(
+      '#type' => 'radios',
+      '#title' => t('What night do you need a hotel room?'),
+      '#description' => t('Select the night you need a holtel room'),
+      '#required' => FALSE,
+      '#options' => array(
+        'friday' => t('Friday'),
+        'saturday' => t('Saturday'),
+        'both' => t('Both nights'),
+      ),
+    );
+
+    $form['product_info']['brewery_hotel_bed'] = array(
+      '#type' => 'radios',
+      '#title' => t('What size bed do you need?'),
+      '#description' => t('Select size bed you need.'),
+      '#required' => FALSE,
+      '#options' => array(
+        'king' => t('King'),
+        'double' => t('Double'),
+      ),
     );
 
     $form['comments'] = array(
@@ -263,7 +289,10 @@ function hcbf_brewery_registration_form_submit($form, &$form_state) {
   $brewery_entity->field_hcbf_brewery_distributer->set(filter_xss($form_state['values']['distributor_name']));
   $brewery_entity->field_hcbf_brewery_beers->set(filter_xss($form_state['values']['brewery_beers_bringing']));
   $brewery_entity->field_hcbf_brewery_staff->set(filter_xss($form_state['values']['brewery_staff']));
+  $brewery_entity->field_hcbf_brewery_staff_members->set(filter_xss($form_state['values']['brewery_staff_names']));
   $brewery_entity->field_hcbf_brewery_hotel->set(filter_xss($form_state['values']['brewery_hotel']));
+  $brewery_entity->field_hcbf_brewery_hotel_night->set(filter_xss($form_state['values']['brewery_hotel_night']));
+  $brewery_entity->field_hcbf_brewery_hotel_bed->set(filter_xss($form_state['values']['brewery_hotel_bed']));
 
   // Additional comments
   $brewery_entity->field_hcbf_brewery_comments->set(filter_xss($form_state['values']['comments']));

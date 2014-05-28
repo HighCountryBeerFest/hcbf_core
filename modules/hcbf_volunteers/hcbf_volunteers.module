@@ -70,3 +70,46 @@ function hcbf_volunteers_theme() {
   return $themes;
 }
 
+/**
+ * Implements hook_mail()
+ */
+function hcbf_volunteers_mail($key, &$message, $params) {
+  global $user;
+
+  $options = array(
+    'langcode' => $message['language']->language,
+  );
+
+  switch ($key) {
+    case 'volunteers_message':
+      $message['subject'] = t('[@site-name volunteers Form]', array('@site-name' => variable_get('site_name', 'Drupal')), $options);
+      $message['body'][] = t('@name [@email] has volunteered for the festival!',
+        array(
+          '@name' => check_plain($params['name']),
+          '@email' => check_plain($params['email']),
+        ),
+      $options);
+      break;
+  }
+}
+
+/**
+ * Implements a function that sends the mail
+ */
+function hcbf_volunteers_send_mail($form_values) {
+  $module = 'hcbf_volunteers';
+  $key = 'volunteers_message';
+  $to = 'volunteer.hcbf@gmail.com';
+  $from = check_plain($form_values['email']);
+  $params = $form_values;
+  $language = language_default();
+  $send = TRUE;
+  $result = drupal_mail($module, $key, $to, $language, $params, $from, $send);
+  if ($result['result'] == TRUE) {
+    drupal_set_message(t('Thank you for volunteering, you will recieve an email soon with more information.'));
+  }
+  else {
+    drupal_set_message(t('There was a problem sending your message and it was not sent, but you are in the system. If we do not contact you, use the contact form on this site to contact us.'), 'error');
+  }
+}
+

@@ -9,19 +9,17 @@
         <div class="page-header">
           <h1 class="text-center">Buy Tickets</h1>
         </div>
-        <p>Tickets are available now!</p>
+        <p>Tickets will be available soon!</p>
         <div class="table-responsive">
           <table class="table ticket-table">
             <tbody>
               <tr>
-                <td>$45.00</td>
                 <td>General Admission</td>
-                <td><a class="btn btn-danger btn-sm" disabled="disabled" href="#">Sold out!</a></td>
+                <td><a class="btn btn-danger btn-sm" href="#" disabled="disabled"><del>$40.00</del></a></td>
               </tr>
               <tr>
-                <td>$10.00</td>
                 <td>Designated Driver</td>
-                <td><a class="btn btn-primary btn-sm" href="#">Buy now</a></td>
+                <td><a class="btn btn-danger btn-sm" href="#" disabled="disabled"><del>$10.00</del></a></td>
               </tr>
             </tbody>
           </table>
@@ -34,7 +32,7 @@
         <div class="page-header">
           <h1 class="text-center">The Festivities</h1>
         </div>
-        <p class="text-center">Join us at the High Country Fair Grounds in Boone, North Carolina on Saturday, August 30, 2014 from 3:00 pm to 7:00 pm to sample a varity of craft beer, craft food, educational seminars, and live music.</p>
+        <p class="text-center">Join us at the High Country Fairgrounds in Boone, North Carolina on Saturday, August 30, 2014 from 3:00 pm to 7:00 pm to sample a varity of craft beer, craft food, educational seminars, and live music.</p>
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="text-center">
@@ -77,12 +75,12 @@
     <div class="row">
       <div class="col-xs-12 col-md-6">
         <h1 class="heading text-center">Want to serve your beer?</h1>
-        <p class="lead text-center">We're looking for craft breweries who want to participate in this year's High Country Beer Fest.</p>
+        <p class="lead text-center">We'd love to have your beer! We're looking for craft breweries who want to participate in this year's High Country Beer Fest.</p>
         <p class="text-center"><a class="btn btn-success btn-lg" href="/breweries/register" role="button">I'd like to register my brewery</a></p>
       </div>
       <div class="col-xs-12 col-md-6">
         <h1 class="heading text-center">Do you want to be a sponsor?</h1>
-        <p class="lead text-center">Do you want to be a sponsor? We have plenty of sponsorship oppertunities, contact us and we'll let you know how you can help out.</p>
+        <p class="lead text-center">We have plenty of sponsorship oppertunities, contact us and we'll let you know how you can help out.</p>
         <p class="text-center"><a class="btn btn-success btn-lg" href="/sponsors/register" role="button">I'd like to sponsor the Beer Fest</a></p>
       </div>
     </div>

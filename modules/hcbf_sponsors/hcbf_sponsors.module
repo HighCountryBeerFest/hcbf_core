@@ -41,6 +41,14 @@ function hcbf_sponsors_menu() {
     'file' => 'hcbf_sponsors.pages.inc'
   );
 
+  $items['sponsors/register'] = array(
+    'title' => t('Register as a sponsor'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hcbf_sponsors_registration_form'),
+    'access arguments' => array('access sponsors registration'),
+    'file' => 'hcbf_sponsors.forms.inc'
+  );
+
   return $items;
 }
 

@@ -162,8 +162,9 @@ function hcbf_volunteer_form_submit($form, &$form_state) {
   $volunteer_entity->field_hcbf_volunteer_accepted->set('no');
   $volunteer_entity->save();
 
+  hcbf_volunteers_send_mail($form_state['values']);
+
   // Notify the responsable role a volunteer has volunteered
-  drupal_set_message(t('Thank you for volunteering, you will recieve an email soon with more information.'));
 }
 
 /**
