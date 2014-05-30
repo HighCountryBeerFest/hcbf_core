@@ -86,3 +86,41 @@ function hcbf_breweries_theme() {
   return $themes;
 }
 
+/**
+ * Implements hook_mail()
+ */
+function hcbf_breweries_mail($key, &$message, $params) {
+  global $user;
+
+  $options = array(
+    'langcode' => $message['language']->language,
+  );
+
+  switch ($key) {
+    case 'breweries_message':
+      $message['subject'] = t('[@site-name breweries Form]', array('@site-name' => variable_get('site_name', 'Drupal')), $options);
+      $message['body'][] = t('@name has signed up for the festival!',
+        array(
+          '@name' => check_plain($params['brewery_name']),
+        ),
+      $options);
+      break;
+  }
+}
+
+/**
+ * Implements a function that sends the mail
+ */
+function hcbf_breweries_send_mail($form_values) {
+  $module = 'hcbf_breweries';
+  $key = 'breweries_message';
+  $to = 'breweries@hcbeerfest.com';
+  $from = 'noreply@hcbeerfest.com';
+  $params = $form_values;
+  $language = language_default();
+  $send = TRUE;
+  $result = drupal_mail($module, $key, $to, $language, $params, $from, $send);
+  if ($result['result'] != TRUE) {
+    drupal_set_message(t('There was a problem sending your message and it was not sent, but you are in the system. If we do not contact you, use the contact form on this site to contact us.'), 'error');
+  }
+}

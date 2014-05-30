@@ -302,6 +302,7 @@ function hcbf_brewery_registration_form_submit($form, &$form_state) {
 
   // Save the entity
   $brewery_entity->save();
+  hcbf_breweries_send_mail($form_state['values']);
 
   drupal_set_message(t('Thank you for registering your brewery for the High Country Beer Festival. We will be in contact with you soon.'));
 }

@@ -99,7 +99,7 @@ function hcbf_volunteers_mail($key, &$message, $params) {
 function hcbf_volunteers_send_mail($form_values) {
   $module = 'hcbf_volunteers';
   $key = 'volunteers_message';
-  $to = 'volunteer.hcbf@gmail.com';
+  $to = 'volunteer@hcbeerfest.com';
   $from = check_plain($form_values['email']);
   $params = $form_values;
   $language = language_default();

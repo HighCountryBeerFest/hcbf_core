@@ -64,7 +64,7 @@ function hcbf_contact_mail($key, &$message, $params) {
 function hcbf_contact_send_mail($form_values) {
   $module = 'hcbf_contact';
   $key = 'contact_message';
-  $to = 'contact.hcbf@gmail.com';
+  $to = 'info@hcbeerfest.com';
   $from = check_plain($form_values['contact_email']);
   $params = $form_values;
   $language = language_default();
