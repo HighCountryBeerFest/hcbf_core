@@ -86,10 +86,10 @@ function hcbf_sponsors_registration_form_submit($form, &$form_state) {
   $sponsor_entity = entity_metadata_wrapper('node', $sponsor);
 
   // sponsor information
-  $sponsor_entity->field_hcbf_sponsor_name->set(filter_xss($form_state['values']['sponsor_business_name']));
-  $sponsor_entity->field_hcbf_sponsor_contact_name->set(filter_xss($form_state['values']['sponsor_name']));
-  $sponsor_entity->field_hcbf_sponsor_contact_phone->set(filter_xss($form_state['values']['sponsor_email']));
-  $sponsor_entity->field_hcbf_sponsor_sponsor_level->set(filter_xss($form_state['values']['sponsor_level']));
+  $sponsor_entity->field_hcbf_sponsor_name->set(check_plain($form_state['values']['sponsor_business_name']));
+  $sponsor_entity->field_hcbf_sponsor_contact_name->set(check_plain($form_state['values']['sponsor_name']));
+  $sponsor_entity->field_hcbf_sponsor_contact_phone->set(check_plain($form_state['values']['sponsor_email']));
+  $sponsor_entity->field_hcbf_sponsor_sponsor_level->set(check_plain($form_state['values']['sponsor_level']));
 
   $sponsor_entity->status->set(1);
 

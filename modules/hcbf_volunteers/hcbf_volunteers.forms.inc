@@ -152,13 +152,13 @@ function hcbf_volunteer_form_submit($form, &$form_state) {
   // Create a volunteer node
   $volunteer = entity_create('node', array('type' => 'hcbf_volunteer'));
   $volunteer_entity = entity_metadata_wrapper('node',$volunteer);
-  $volunteer_entity->field_hcbf_volunteer_name->set(filter_xss($form_state['values']['name']));
-  $volunteer_entity->field_hcbf_volunteer_email->set(filter_xss($form_state['values']['email']));
-  $volunteer_entity->field_hcbf_volunteer_phone->set(filter_xss($form_state['values']['phone']));
-  $volunteer_entity->field_hcbf_volunteer_dob->set(filter_xss($form_state['values']['dob']));
-  $volunteer_entity->field_hcbf_volunteer_shirt->set(filter_xss($form_state['values']['shirt']));
-  $volunteer_entity->field_hcbf_volunteer_volunteer->set(filter_xss($form_state['values']['previous_volunteer']));
-  $volunteer_entity->field_hcbf_volunteer_comments->set(filter_xss($form_state['values']['comments']));
+  $volunteer_entity->field_hcbf_volunteer_name->set(check_plain($form_state['values']['name']));
+  $volunteer_entity->field_hcbf_volunteer_email->set(check_plain($form_state['values']['email']));
+  $volunteer_entity->field_hcbf_volunteer_phone->set(check_plain($form_state['values']['phone']));
+  $volunteer_entity->field_hcbf_volunteer_dob->set(check_plain($form_state['values']['dob']));
+  $volunteer_entity->field_hcbf_volunteer_shirt->set(check_plain($form_state['values']['shirt']));
+  $volunteer_entity->field_hcbf_volunteer_volunteer->set(check_plain($form_state['values']['previous_volunteer']));
+  $volunteer_entity->field_hcbf_volunteer_comments->set(check_plain($form_state['values']['comments']));
   $volunteer_entity->field_hcbf_volunteer_accepted->set('no');
   $volunteer_entity->save();
 

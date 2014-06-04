@@ -266,36 +266,36 @@ function hcbf_brewery_registration_form_submit($form, &$form_state) {
   $brewery_entity = entity_metadata_wrapper('node', $brewery);
 
   // Brewery information
-  $brewery_entity->field_hcbf_brewery_name->set(filter_xss($form_state['values']['brewery_name']));
-  $brewery_entity->field_hcbf_brewery_brewery_addy1->set(filter_xss($form_state['values']['brewery_address_1']));
-  $brewery_entity->field_hcbf_brewery_brewery_addy2->set(filter_xss($form_state['values']['brewery_address_2']));
-  $brewery_entity->field_hcbf_brewery_brewery_city->set(filter_xss($form_state['values']['brewery_city']));
-  $brewery_entity->field_hcbf_brewery_brewery_state->set(filter_xss($form_state['values']['brewery_state']));
-  $brewery_entity->field_hcbf_brewer_brewery_zip->set(filter_xss($form_state['values']['brewery_zip']));
-  $brewery_entity->field_hcbf_brewery_brewery_url->set(filter_xss($form_state['values']['brewery_website']));
+  $brewery_entity->field_hcbf_brewery_name->set(check_plain($form_state['values']['brewery_name']));
+  $brewery_entity->field_hcbf_brewery_brewery_addy1->set(check_plain($form_state['values']['brewery_address_1']));
+  $brewery_entity->field_hcbf_brewery_brewery_addy2->set(check_plain($form_state['values']['brewery_address_2']));
+  $brewery_entity->field_hcbf_brewery_brewery_city->set(check_plain($form_state['values']['brewery_city']));
+  $brewery_entity->field_hcbf_brewery_brewery_state->set(check_plain($form_state['values']['brewery_state']));
+  $brewery_entity->field_hcbf_brewer_brewery_zip->set(check_plain($form_state['values']['brewery_zip']));
+  $brewery_entity->field_hcbf_brewery_brewery_url->set(check_plain($form_state['values']['brewery_website']));
 
   // Primary contact information
-  $brewery_entity->field_hcbf_brewery_primary_name->set(filter_xss($form_state['values']['primary_contact_name']));
-  $brewery_entity->field_hcbf_brewery_primary_phone->set(filter_xss($form_state['values']['primary_main_contact_phone']));
-  $brewery_entity->field_hcbf_brewery_primary_email->set(filter_xss($form_state['values']['primary_email_address']));
+  $brewery_entity->field_hcbf_brewery_primary_name->set(check_plain($form_state['values']['primary_contact_name']));
+  $brewery_entity->field_hcbf_brewery_primary_phone->set(check_plain($form_state['values']['primary_main_contact_phone']));
+  $brewery_entity->field_hcbf_brewery_primary_email->set(check_plain($form_state['values']['primary_email_address']));
 
   // Secondary contact information
-  $brewery_entity->field_hcbf_brewery_second_name->set(filter_xss($form_state['values']['secondary_contact_name']));
-  $brewery_entity->field_hcbf_brewery_second_phone->set(filter_xss($form_state['values']['secondary_main_contact_phone']));
-  $brewery_entity->field_hcbf_brewery_second_email->set(filter_xss($form_state['values']['secondary_email_address']));
+  $brewery_entity->field_hcbf_brewery_second_name->set(check_plain($form_state['values']['secondary_contact_name']));
+  $brewery_entity->field_hcbf_brewery_second_phone->set(check_plain($form_state['values']['secondary_main_contact_phone']));
+  $brewery_entity->field_hcbf_brewery_second_email->set(check_plain($form_state['values']['secondary_email_address']));
 
   // Product information
-  $brewery_entity->field_hcbf_brewery_deliver->set(filter_xss($form_state['values']['product_delivery']));
-  $brewery_entity->field_hcbf_brewery_distributer->set(filter_xss($form_state['values']['distributor_name']));
-  $brewery_entity->field_hcbf_brewery_beers->set(filter_xss($form_state['values']['brewery_beers_bringing']));
-  $brewery_entity->field_hcbf_brewery_staff->set(filter_xss($form_state['values']['brewery_staff']));
-  $brewery_entity->field_hcbf_brewery_staff_members->set(filter_xss($form_state['values']['brewery_staff_names']));
-  $brewery_entity->field_hcbf_brewery_hotel->set(filter_xss($form_state['values']['brewery_hotel']));
-  $brewery_entity->field_hcbf_brewery_hotel_night->set(filter_xss($form_state['values']['brewery_hotel_night']));
-  $brewery_entity->field_hcbf_brewery_hotel_bed->set(filter_xss($form_state['values']['brewery_hotel_bed']));
+  $brewery_entity->field_hcbf_brewery_deliver->set(check_plain($form_state['values']['product_delivery']));
+  $brewery_entity->field_hcbf_brewery_distributer->set(check_plain($form_state['values']['distributor_name']));
+  $brewery_entity->field_hcbf_brewery_beers->set(check_plain($form_state['values']['brewery_beers_bringing']));
+  $brewery_entity->field_hcbf_brewery_staff->set(check_plain($form_state['values']['brewery_staff']));
+  $brewery_entity->field_hcbf_brewery_staff_members->set(check_plain($form_state['values']['brewery_staff_names']));
+  $brewery_entity->field_hcbf_brewery_hotel->set(check_plain($form_state['values']['brewery_hotel']));
+  $brewery_entity->field_hcbf_brewery_hotel_night->set(check_plain($form_state['values']['brewery_hotel_night']));
+  $brewery_entity->field_hcbf_brewery_hotel_bed->set(check_plain($form_state['values']['brewery_hotel_bed']));
 
   // Additional comments
-  $brewery_entity->field_hcbf_brewery_comments->set(filter_xss($form_state['values']['comments']));
+  $brewery_entity->field_hcbf_brewery_comments->set(check_plain($form_state['values']['comments']));
 
   $brewery_entity->field_hcbf_brewery_accepted->set('no');
   $brewery_entity->status->set(1);
