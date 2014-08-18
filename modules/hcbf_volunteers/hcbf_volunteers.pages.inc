@@ -18,8 +18,10 @@ function hcbf_volunteer_manage() {
   $volunteer_nids = array_keys($result['node']);
 
   $volunteers = array();
+  $count = 0;
   foreach ($volunteer_nids as $volunteer) {
     $volunteer_entity = entity_metadata_wrapper('node', $volunteer);
+    $count++;
 
     $approved = array(
       '#type' => 'markup',
@@ -32,6 +34,10 @@ function hcbf_volunteer_manage() {
     }
 
     $volunteers[] = array(
+      'count' => array(
+        '#type' => 'markup',
+        '#markup' => $count,
+      ),
       'name' => array(
         '#type' => 'markup',
         '#markup' => $volunteer_entity->label(),
@@ -55,6 +61,10 @@ function hcbf_volunteer_manage() {
         '#type' => 'markup',
         '#markup' => l(t('Email'), 'mailto:' . $volunteer_entity->field_hcbf_volunteer_email->value(), array('absolute' => TRUE)),
         '#prefix' => '<i class="fa fa-inbox"></i> ',
+      ),
+      'shirt_size' => array(
+        '#type' => 'markup',
+        '#markup' => $volunteer_entity->field_hcbf_volunteer_shirt->value(),
       ),
       'view' => array(
         '#type' => 'markup',

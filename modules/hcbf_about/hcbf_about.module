@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * The about module for the High Country Craft Food and Beverage Festival's website.
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_about_menu() {
+  $items = array();
+
+  $items['about'] = array(
+    'title' => t('About the High Country Beer Fest'),
+    'page callback' => 'hcbf_about',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_about.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_about_theme() {
+  $themes = array();
+
+  $themes['hcbf_about'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_about',
+  );
+
+  return $themes;
+}
+

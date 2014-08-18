@@ -1,0 +1,6 @@
+name = High Country Beer Fest Location
+description = The Location and exit pages for the High Country Beer Fest
+core = 7.x
+version = 7.x-1.x
+package = HCBF
+

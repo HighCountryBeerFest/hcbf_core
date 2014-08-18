@@ -34,14 +34,14 @@ function hcbf_breweries_menu() {
   $items = array();
 
   $items['breweries'] = array(
-    'title' => t('Breweries'),
+    'title' => 'Participating Breweries',
     'page callback' => 'hcbf_breweries',
     'access arguments' => array('access breweries'),
     'file' => 'hcbf_breweries.pages.inc'
   );
 
   $items['breweries/register'] = array(
-    'title' => t('Register as a brewery'),
+    'title' => 'Register as a brewery',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('hcbf_brewery_registration_form'),
     'access arguments' => array('access breweries registration'),
@@ -49,14 +49,14 @@ function hcbf_breweries_menu() {
   );
 
   $items['breweries/manage'] = array(
-    'title' => t('Manage breweries'),
+    'title' => 'Manage breweries',
     'page callback' => 'hcbf_breweries_manage',
     'access arguments' => array('manage breweries'),
     'file' => 'hcbf_breweries.pages.inc'
   );
 
   $items['breweries/settings'] = array(
-    'title' => t('Breweries settings'),
+    'title' => 'Breweries settings',
     'descrption' => t('Settings for the breweries section of the site.'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('hcbf_breweries_settings_form'),

@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Code for the Food feature.
+ */
+
+include_once 'hcbf_food.features.inc';
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_food_menu() {
+  $items = array();
+
+  $items['food'] = array(
+    'title' => t('The food'),
+    'page callback' => 'hcbf_food',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_food.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_food_theme() {
+  $themes = array();
+
+  $themes['hcbf_food'] = array(
+    'variables' => array(
+      'foods' => NULL,
+    ),
+    'template' => 'templates/hcbf_food',
+  );
+
+  return $themes;
+}
+

@@ -1,5 +1,5 @@
 name = High Country Beer Fest Breweries
-description = Brewery content types for the High Country Beer  Fest's websites.
+description = Brewery content types for the High Country Beer Fest's websites.
 core = 7.x
 package = hcbf feaures
 version = 7.x-1.x

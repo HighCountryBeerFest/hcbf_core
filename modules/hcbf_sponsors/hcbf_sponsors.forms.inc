@@ -18,6 +18,8 @@ function hcbf_sponsors_registration_form($form, &$form_state) {
     '#suffix' => '</div></div></div></div>'
   );
 
+  $sponsor_sheet = '/' . drupal_get_path('module', 'hcbf_sponsors') . '/images/sponsor_2014.jpg';
+
   $form['sponsor_info'] = array(
     '#type' => 'fieldset',
     '#title' => t('Information about your business'),

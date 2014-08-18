@@ -1,0 +1,5 @@
+name = High Country Beer Fest About
+description = Provides the About functionality for the High Country Beer Fest website.
+core = 7.x
+version = 7.x-1.x
+package = HCBF

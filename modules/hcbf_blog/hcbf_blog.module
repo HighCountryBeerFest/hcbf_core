@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ * Code for the High Country Beer Fest Blog feature.
+ */
+
+include_once 'hcbf_blog.features.inc';
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_blog_menu() {
+  $items = array();
+
+  $items['blog'] = array(
+    'title' => t('Our blog'),
+    'page callback' => 'hcbf_blog',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_blog.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_blog_theme() {
+  $themes = array();
+
+  $themes['hcbf_blog'] = array(
+    'variables' => array(
+      'posts' => NULL,
+      'recent_posts' => NULL,
+    ),
+    'template' => 'templates/hcbf_blog',
+  );
+
+  return $themes;
+}
+

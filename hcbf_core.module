@@ -4,3 +4,498 @@
  * The core module for the High Country Craft Food and Beverage Festival's website.
  */
 
+/**
+ * Gets a count of the currently published breweries.
+ */
+function hcbf_get_brewery_count() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'hcbf_brewery')
+    ->propertyCondition('status', 1)
+    ->fieldCondition('field_hcbf_brewery_accepted', 'value', 'yes', '=')
+    ->propertyOrderBy('title', 'ASC');
+
+  $result = $query->execute();
+  return count(array_keys($result['node']));
+}
+
+/**
+ * Generates a box.
+ *
+ * @param $box array
+ *   A keyed array that describes the box and it's contents.
+ *
+ *   Usage:
+ *      $box = array(
+ *        'name' => 'name',
+ *        'wrapper_classes' => array('wrapper-1', 'wrapper-2'),
+ *        'icon' => 'fa-iconname',
+ *        'title' => 'A string for a heading',
+ *        'content' => array(
+ *          '#type' => 'markup',
+ *          '#markup' => 'Text content',
+ *          '#prefix' => '<p>',
+ *          '#suffix' => '</p>',
+ *        ),
+ *       );
+ *      $box_array = hcbf_link_box_generator($box);
+ *
+ */
+function hcbf_link_box_generator($box) {
+
+  // Build the wrapper class array
+  $wrapper_classes = array('box-wrapper');
+  if (array_key_exists('name', $box) && !empty($box['name'])) {
+    $wrapper_classes[] = $box['name'] . '-wrapper';
+  }
+
+  // Add additional classes
+  if (array_key_exists('wrapper_classes', $box) && !empty($box['wrapper_classes'])) {
+    $wrapper_classes = array_merge($wrapper_classes, $box['wrapper_classes']);
+  }
+  $wrapper_classes = implode(' ', $wrapper_classes);
+
+  // Make sure the icon is set
+  $box_icon = 'fa-circle-o-notch fa-spin';
+  if (array_key_exists('icon', $box) && !empty($box['icon'])) {
+    $box_icon = $box['icon'];
+  }
+
+  // Make sure the title is set
+  $box_title = t('Box title');
+  if (array_key_exists('title', $box) && !empty($box['title'])) {
+    $box_title = $box['title'];
+  }
+  $box_title = t('Box title');
+  if (array_key_exists('title', $box) && !empty($box['title'])) {
+    $box_title = $box['title'];
+  }
+
+  // Get the box content
+  $box_content = array(
+    '#type' => 'markup',
+    '#markup' => 'Default box content',
+    '#prefix' => '<p>',
+    '#suffix' => '</p>',
+  );
+  if (array_key_exists('content', $box) && !empty($box['content'])) {
+    $box_content = $box['content'];
+  }
+
+  $dom = array(
+    array(
+      '#type' => 'markup',
+      '#prefix' => '<div class="' . $wrapper_classes . '">',
+      '#suffix' => '</div>',
+      array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="text-center">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#prefix' => '<i class="icon fa ' . $box_icon . ' fa-5x">',
+          '#suffix' => '</i>',
+        ),
+      ),
+
+      array( '#type' => 'markup',
+        '#prefix' => '<div class="page-header">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#markup' => $box_title,
+          '#prefix' => '<h2 class="text-center">',
+          '#suffix' => '</h2>',
+        ),
+      ),
+      $box_content,
+    ),
+  );
+
+  return $dom;
+}
+
+/**
+ * Generates the 'Sponsor signup' box.
+ *
+ * Usage:
+ *     $box = hcbf_register_sponsor_box(array('foo', 'bar'));
+ *
+ * @param $button_classes array
+ *   An array of classes that will be added to the box after it's rendered.
+ *
+ * @param $extra_classes array
+ *   An array of classes that will be added to the box after it's rendered.
+ *
+ * @param $button_text string
+ *   A string with button text if it differs from the default.
+ *
+ * @param $description_text string
+ *   A string with description text if it differs from the default.
+ *
+ * @return array
+ *   A renderable array that contains the content for the "buy tickets" box.
+ */
+function hcbf_register_sponsor_box($button_classes, $extra_classes, $button_text, $description_text) {
+  // Set the classes
+  $classes = array('register-sponsor-wrapper');
+  if (!empty($extra_classes)) {
+    $classes = array_merge($classes, $extra_classes);
+  }
+  $classes = implode(' ', $classes);
+
+  $sponsor_class = array('btn-success', 'btn');
+  if (!empty($button_classes)) {
+    $sponsor_class = array_merge($sponsor_class, $button_classes);
+  }
+  $sponsor_class = implode(' ', $sponsor_class);
+
+  $sponsor_text = t('I\'d like to sponsor the Beer Fest');
+  if ($button_text) {
+    $sponsor_text = $button_text;
+  }
+
+  $sponsor_description = t('We have plenty of sponsorship opportunities, contact us and we\'ll let you know how you can help out.');
+  if ($description_text) {
+    $sponsor_description = $description_text;
+  }
+
+  $sponsor_link = l(
+    $sponsor_text,
+    'sponsors/register',
+    array(
+      'attributes' => array(
+        'class' => $sponsor_class,
+      )
+    )
+  );
+
+  // Generate the dom
+  $dom = array(
+    array(
+      '#type' => 'markup',
+      '#prefix' => '<div class="' . $classes . '">',
+      '#suffix' => '</div>',
+      array(
+        '#type' => 'markup',
+        '#markup' => t('Do you want to be a sponsor?'),
+        '#prefix' => '<h1 class="heading text-center">',
+        '#suffix' => '</h1>',
+      ),
+      array(
+        '#type' => 'markup',
+        '#markup' => $sponsor_description,
+        '#prefix' => '<p class="lead text-center">',
+        '#suffix' => '</p>'
+      ),
+      array(
+        '#type' => 'markup',
+        '#prefix' => '<p class="text-center">',
+        '#suffix' => '</p>',
+        array(
+          '#type' => 'markup',
+          '#markup' => $sponsor_link,
+        ),
+      ),
+    ),
+  );
+
+  return $dom;
+}
+
+/**
+ * Generates the 'Get Involved' box
+ */
+
+
+/**
+ * Generates the 'Register brewery' box.
+ *
+ * Usage:
+ *     $box = hcbf_register_brewery_box(array('foo', 'bar'));
+ *
+ * @param $button_classes array
+ *   An array of classes that will be added to the box after it's rendered.
+ *
+ * @param $extra_classes array
+ *   An array of classes that will be added to the box after it's rendered.
+ *
+ * @param $button_text string
+ *   A string with button text if it differs from the default.
+ *
+ * @return array
+ *   A renderable array that contains the content for the "buy tickets" box.
+ */
+function hcbf_register_brewery_box($button_classes, $extra_classes, $button_text) {
+  // Set the classes
+  $classes = array('register-brewery-wrapper');
+  if (!empty($extra_classes)) {
+    $classes = array_merge($classes, $extra_classes);
+  }
+  $classes = implode(' ', $classes);
+
+  $register_class = array('btn-success', 'btn');
+  if (!empty($button_classes)) {
+    $register_class = array_merge($register_class, $button_classes);
+  }
+  $register_class = implode(' ', $register_class);
+
+  $register_text = t('I\'d like to register my brewery');
+  if ($button_text) {
+    $register_text = $button_text;
+  }
+
+  $register_link = l(
+    $register_text,
+    'breweries/register',
+    array(
+      'attributes' => array(
+        'class' => $register_class,
+      )
+    )
+  );
+
+  // Generate the dom
+  $dom = array(
+    array(
+      '#type' => 'markup',
+      '#prefix' => '<div class="' . $classes . '">',
+      '#suffix' => '</div>',
+      array(
+        '#type' => 'markup',
+        '#markup' => t('Want to serve your beer?'),
+        '#prefix' => '<h1 class="heading text-center">',
+        '#suffix' => '</h1>',
+      ),
+      array(
+        '#type' => 'markup',
+        '#markup' => t('We\'d love to have your beer! We\'re looking for craft breweries who want to participate in this year\'s High Country Beer Fest.'),
+        '#prefix' => '<p class="lead text-center">',
+        '#suffix' => '</p>'
+      ),
+      array(
+        '#type' => 'markup',
+        '#prefix' => '<p class="text-center">',
+        '#suffix' => '</p>',
+        array(
+          '#type' => 'markup',
+          '#markup' => $register_link,
+        ),
+      ),
+    ),
+  );
+
+  return $dom;
+}
+
+/**
+ * Generates the 'Buy tickets' box.
+ *
+ * Usage:
+ *     $box = hcbf_buy_tickets_box(array(
+ *       'wrapper-classes', array('well'),
+ *     ));
+ *
+ * @param $extra_classes array
+ *   An array of classes that will be added to the box after it's rendered.
+ *
+ * @return array
+ *   A renderable array that contains the content for the "buy tickets" box.
+ */
+function hcbf_buy_tickets_box($extra_classes) {
+
+  // Set the classes
+  $classes = array('buy-tickets-wrapper');
+  if (!empty($extra_classes)) {
+    $classes = array_merge($classes, $extra_classes);
+  }
+  $classes = implode(', ', $classes);
+
+  // Generate the links for ticket types
+  $general_admission = l(
+    t('$40.00'),
+    'http://www.etix.com/ticket/online/performanceSearch.jsp?performance_id=1820947',
+    array(
+      'attributes' => array(
+        'class' => 'btn btn-success btn-sm'
+      )
+    )
+  );
+
+  $designated_driver = l(
+    t('$10.00'),
+    'http://www.etix.com/ticket/online/performanceSearch.jsp?performance_id=1821065',
+    array(
+      'attributes' => array(
+        'class' => 'btn btn-success btn-sm'
+      )
+    )
+  );
+
+  // Set the description text
+  $peabodys_link = l(t("Peabody's"), 'http://peabodyswineandbeer.com/');
+  $benchmark_link = l(t('Benchmark Provisions'), 'https://www.facebook.com/benchmarkprovisions');
+  $descrption = 'Tickets are on sale now! You can also buy paper tickets at ' . $peabodys_link . ' and ' . $benchmark_link . ' if you\'re in town.';
+
+  // Generate the dom
+  $dom = array(
+    array(
+      '#type' => 'markup',
+      '#prefix' => '<div class="' . $classes . '">',
+      '#suffix' => '</div>',
+      array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="text-center">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#prefix' => '<i class="icon fa fa-ticket fa-5x">',
+          '#suffix' => '</i>',
+        ),
+      ),
+
+      array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="page-header">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#markup' => t('Buy Tickets'),
+          '#prefix' => '<h2 class="text-center">',
+          '#suffix' => '</h2>',
+        ),
+      ),
+
+      array(
+        '#type' => 'markup',
+        '#markup' => $descrption,
+        '#prefix' => '<p>',
+        '#suffix' => '</p>',
+      ),
+      array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="table-responsive">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#prefix' => '<table class="table ticket-table">',
+          '#suffix' => '</table>',
+          array(
+            '#type' => 'markup',
+            '#prefix' => '<tbody>',
+            '#suffix' => '</tbody>',
+
+            array(
+              '#type' => 'markup',
+              '#prefix' => '<tr>',
+              '#suffix' => '</tr>',
+              array(
+                '#type' => 'markup',
+                '#markup' => 'General Admission',
+                '#prefix' => '<td>',
+                '#suffix' => '</td>',
+              ),
+              array(
+                '#type' => 'markup',
+                '#markup' => $general_admission,
+                '#prefix' => '<td>',
+                '#suffix' => '</td>',
+              ),
+            ),
+
+            array(
+              '#type' => 'markup',
+              '#prefix' => '<tr>',
+              '#suffix' => '</tr>',
+              array(
+                '#type' => 'markup',
+                '#markup' => 'Designated Driver',
+                '#prefix' => '<td>',
+                '#suffix' => '</td>',
+              ),
+              array(
+                '#type' => 'markup',
+                '#markup' => $designated_driver,
+                '#prefix' => '<td>',
+                '#suffix' => '</td>',
+              ),
+            ),
+
+          ),
+        ),
+      ),
+    ),
+  );
+
+  return $dom;
+}
+
+/**
+ * Generates the 'The Festivities' box.
+ *
+ * @return array
+ *   A renderable array that contains the content for the The Festivities page
+ */
+function hcbf_the_festivities_box() {
+  $brewery_count = hcbf_get_brewery_count();
+  return hcbf_link_box_generator(
+    array(
+      'name' => 'the-festivities',
+      'icon' => 'fa-beer',
+      'title' => t('The Festivities'),
+      'content' => array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="box-content">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#markup' => 'Join us and ' . $brewery_count . ' breweries from around the world at the High Country Fairgrounds in Boone, North Carolina on Saturday, August 30, 2014 from 3:00 pm to 7:00 pm to sample a variety of craft beer, craft food, educational seminars, and live music.',
+          '#prefix' => '<p class="text-center">',
+          '#suffix' => '</p>',
+        ),
+      ),
+    )
+  );
+}
+
+/**
+ * Generates the 'Get involved' box.
+ *
+ * @return array
+ *   A renderable array that contains the content for the "buy tickets" box.
+ */
+function hcbf_get_involved_box() {
+  return hcbf_link_box_generator(
+    array(
+      'name' => 'get-involved',
+      'icon' => 'fa-users',
+      'title' => t('Get involved'),
+      'content' => array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="box-content">',
+        '#suffix' => '</div>',
+        array(
+          '#type' => 'markup',
+          '#markup' => 'We\'re looking for volunteers to help us put on the 7<sup>th</sup> annual High Country Beer Fest.',
+          '#prefix' => '<p class="text-center">',
+          '#suffix' => '</p>',
+        ),
+        array(
+          '#type' => 'markup',
+          '#prefix' => '<div class="text-center">',
+          '#suffix' => '</div>',
+          array(
+            '#type' => 'markup',
+            '#markup' => l('<i class="fa fa-thumbs-up"></i> ' . t('I\'d like to get involved'), 'volunteer', array(
+              'attributes' => array(
+                'class' => array('btn', 'btn-success', 'btn-lg'),
+              ),
+              'html' => TRUE,
+            )),
+          ),
+        ),
+      ),
+    )
+  );
+}
+

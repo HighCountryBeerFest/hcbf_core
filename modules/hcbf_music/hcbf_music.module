@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Code for the hcbf_music feature.
+ */
+
+include_once 'hcbf_music.features.inc';
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_music_menu() {
+  $items = array();
+
+  $items['music'] = array(
+    'title' => t('Music'),
+    'page callback' => 'hcbf_music',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_music.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_music_theme() {
+  $themes = array();
+
+  $themes['hcbf_music'] = array(
+    'variables' => array(
+      'bands' => NULL,
+    ),
+    'template' => 'templates/hcbf_music',
+  );
+
+  return $themes;
+}
+

@@ -21,3 +21,12 @@ function hcbf_core_install() {
 function hcbf_core_uninstall() {
 }
 
+/**
+ * Unistalls the hcbf_location module.
+ */
+function hcbf_core_update_7001() {
+  if (module_exists('hcbf_location')) {
+    module_disable(array('hcbf_location'));
+  }
+}
+

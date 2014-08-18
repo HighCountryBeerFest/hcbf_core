@@ -3,58 +3,18 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <div class="text-center">
-          <i class="icon fa fa-ticket fa-5x"></i>
-        </div>
-        <div class="page-header">
-          <h1 class="text-center">Buy Tickets</h1>
-        </div>
-        <p>Tickets are on sale now!</p>
-        <div class="table-responsive">
-          <table class="table ticket-table">
-            <tbody>
-              <tr>
-                <td>General Admission</td>
-                <td><a class="btn btn-success btn-sm" href="http://www.etix.com/ticket/online/performanceSearch.jsp?performance_id=1820947">$40.00</a></td>
-              </tr>
-              <tr>
-                <td>Designated Driver</td>
-                <td><a class="btn btn-success btn-sm" href="http://www.etix.com/ticket/online/performanceSearch.jsp?performance_id=1821065">$10.00</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <?php print render(hcbf_buy_tickets_box()); ?>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <div class="text-center">
-          <i class="icon fa fa-beer fa-5x"></i>
-        </div>
-        <div class="page-header">
-          <h1 class="text-center">The Festivities</h1>
-        </div>
-        <p class="text-center">Join us at the High Country Fairgrounds in Boone, North Carolina on Saturday, August 30, 2014 from 3:00 pm to 7:00 pm to sample a varity of craft beer, craft food, educational seminars, and live music.</p>
+        <?php print render(hcbf_the_festivities_box()); ?>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <div class="text-center">
-          <i class="icon fa fa-users fa-5x"></i>
-        </div>
-        <div class="page-header">
-          <h1 class="text-center">Get involved</h1>
-        </div>
-        <p class="text-center">We're looking for volunteers to help us put on the 7<sup>th</sup> annual High Country Beer Fest.</p>
-        <div class="text-center">
-          <p>
-            <a class="btn btn-success btn-lg" href="/volunteer" role="button">
-             <i class="fa fa-thumbs-up"></i> I'd like to get involved
-            </a>
-          </p>
-        </div>
-      </div>
+        <?php print render(hcbf_get_involved_box()); ?>
     </div>
   </div>
 </div>
     
-<div class="wrapper inverse-wrapper">
+<div id="video-wrapper" class="wrapper inverse-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8">
@@ -74,14 +34,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
-        <h1 class="heading text-center">Want to serve your beer?</h1>
-        <p class="lead text-center">We'd love to have your beer! We're looking for craft breweries who want to participate in this year's High Country Beer Fest.</p>
-        <p class="text-center"><a class="btn btn-success btn-lg" href="/breweries/register" role="button">I'd like to register my brewery</a></p>
+        <?php print render(hcbf_register_brewery_box(array('btn-lg'))); ?>
       </div>
       <div class="col-xs-12 col-md-6">
-        <h1 class="heading text-center">Do you want to be a sponsor?</h1>
-        <p class="lead text-center">We have plenty of sponsorship oppertunities, contact us and we'll let you know how you can help out.</p>
-        <p class="text-center"><a class="btn btn-success btn-lg" href="/sponsors/register" role="button">I'd like to sponsor the Beer Fest</a></p>
+        <?php print render(hcbf_register_sponsor_box(array('btn-lg'))); ?>
       </div>
     </div>
   </div>

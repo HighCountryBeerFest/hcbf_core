@@ -34,7 +34,7 @@ function hcbf_sponsors_menu() {
   $items = array();
 
   $items['sponsors'] = array(
-    'title' => t('Sponsors'),
+    'title' => t('Our sponsors'),
     'page callback' => 'hcbf_sponsors',
     'access arguments' => array('access sponsors'),
     'type' => MENU_CALLBACK,
@@ -59,7 +59,12 @@ function hcbf_sponsors_theme() {
   $themes = array();
 
   $themes['hcbf_sponsors'] = array(
-    'variables' => array(),
+    'variables' => array(
+      'level_4_sponsors' => NULL,
+      'level_3_sponsors' => NULL,
+      'level_2_sponsors' => NULL,
+      'level_1_sponsors' => NULL,
+    ),
     'template' => 'templates/hcbf_sponsors',
   );
 

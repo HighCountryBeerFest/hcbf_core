@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * The location module for the High Country Craft Food and Beverage Festival's website.
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_location_menu() {
+  $items = array();
+
+  $items['festivities'] = array(
+    'title' => t('The Festivities'),
+    'page callback' => 'hcbf_festivities',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_location.pages.inc'
+  );
+
+  $items['exit'] = array(
+    'title' => t('Exit Strategy'),
+    'page callback' => 'hcbf_exit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_location.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * implements hook_theme()
+ */
+function hcbf_location_theme() {
+  $themes = array();
+
+  $themes['hcbf_festivities'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_festivities',
+  );
+
+  $themes['hcbf_exit'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_exit',
+  );
+
+  return $themes;
+}
+
+
