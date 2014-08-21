@@ -6,8 +6,9 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Brewery Name</th>
-                <th>Brewery City</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>State</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
@@ -18,6 +19,7 @@
                 <tr class="<?php print $brewery['row_class']; ?>">
                   <td><?php print render($brewery['name']); ?></td>
                   <td><?php print render($brewery['city']); ?></td>
+                  <td><?php print render($brewery['state']); ?></td>
                   <td><?php print render($brewery['view']); ?></td>
                   <td><?php print render($brewery['edit']); ?></td>
                   <td><?php print render($brewery['delete']); ?></td>

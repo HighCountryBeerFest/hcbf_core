@@ -114,6 +114,10 @@ function hcbf_breweries_manage() {
         '#type' => 'markup',
         '#markup' => $brewery_entity->field_hcbf_brewery_brewery_city->value(),
       ),
+      'state' => array(
+        '#type' => 'markup',
+        '#markup' => $brewery_entity->field_hcbf_brewery_brewery_state->value(),
+      ),
       'view' => array(
         '#type' => 'markup',
         '#markup' => l(t('View'), 'node/' . $brewery_entity->nid->value()),
