@@ -55,23 +55,22 @@
         <div class="page-header">
           <h1>What's your exit strategy?</h1>
         </div>
-        <p class="lead">The High Country Beer Fest wants to make sure that you have a great time at the Beer Fest, but we also want to make sure you get home safely.</p>
+        <p>The High Country Beer Fest wants to make sure that you have a great time at the Beer Fest, but we also want to make sure you get home safely.</p>
 
         <ul>
-          <li class="lead">Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits for free.</li>
-          <li class="lead">Tipsy Taxi is providing FREE rides anywhere in Boone.</li>
-          <li class="lead">River and Earth Adventures will be providing free bus service from the Raley parking lot on campus.</li>
-          <li class="lead">The Mountain Alliance will be shuttling folks from the Raley parking lot on campus for free.</li>
-          <li class="lead">Designated Driver Tickets are only $10.</li>
+          <li>Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits for free.</li>
+          <li>Tipsy Taxi is providing FREE rides anywhere in Boone.</li>
+          <li>River and Earth Adventures will be providing free bus service from the Raley parking lot on campus.</li>
+          <li>The Mountain Alliance will be shuttling folks from the Country Inn and La Quinta for free.</li>
+          <li>Designated Driver Tickets are only $10.</li>
         </ul>
 
-        <p class="lead">With so many options there's no excuse for getting behind the wheel when you've enjoyed yourself a little too much.</p>
-      </div>
-      <div class="col-xs-12 col-sm-6">
         <div class="page-header">
           <h1>Need a hotel room?</h1>
         </div>
           <p class="lead">We've got you covered! Patrons of the High Country Beer Fest will receive a 10% discount to <a href="http://www.laquintaboone.com/">La Quinta</a>, the <a href="http://www.sleepinn.com/hotel-boone-north_carolina-NC514">Sleep Inn</a>, and the <a href="http://www.countryinns.com/boone-hotel-nc-28607/ncboone">Country Inn and Suites</a>.</p>
+      </div>
+      <div class="col-xs-12 col-sm-6">
       </div>
     </div>
   </div>

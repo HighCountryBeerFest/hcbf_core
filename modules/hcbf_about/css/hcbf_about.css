@@ -13,6 +13,10 @@ body.page-about #exit-container {
   padding-bottom: 10%;
 }
 
+body.page-about #exit-container {
+  padding-top: 5%;
+}
+
 body.page-about #join-container h1 {
   padding-bottom: 50px;
 }
@@ -20,6 +24,11 @@ body.page-about #join-container h1 {
 body.page-about #exit-container h1,
 body.page-about #join-container h1 {
   font-weight: bold;
+  color: #fff;
+}
+
+body.page-about #exit-container,
+body.page-about #exit-container li {
   color: #fff;
 }
 
