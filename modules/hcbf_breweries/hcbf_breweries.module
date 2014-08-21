@@ -55,6 +55,13 @@ function hcbf_breweries_menu() {
     'file' => 'hcbf_breweries.pages.inc'
   );
 
+  $items['breweries/export/hcbf_breweries.csv'] = array(
+    'title' => 'Export breweries',
+    'page callback' => 'hcbf_breweries_export',
+    'access arguments' => array('manage breweries'),
+    'file' => 'hcbf_breweries.pages.inc'
+  );
+
   $items['breweries/settings'] = array(
     'title' => 'Breweries settings',
     'descrption' => t('Settings for the breweries section of the site.'),

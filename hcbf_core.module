@@ -136,7 +136,7 @@ function hcbf_link_box_generator($box) {
  * @return array
  *   A renderable array that contains the content for the "buy tickets" box.
  */
-function hcbf_register_sponsor_box($button_classes, $extra_classes, $button_text, $description_text) {
+function hcbf_register_sponsor_box($button_classes, $extra_classes, $button_text, $description_text = NULL) {
   // Set the classes
   $classes = array('register-sponsor-wrapper');
   if (!empty($extra_classes)) {

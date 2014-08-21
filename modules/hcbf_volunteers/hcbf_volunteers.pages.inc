@@ -5,6 +5,57 @@
  */
 
 /**
+ * Page callback for the volunteers export page
+ */
+function hcbf_volunteer_export() {
+  drupal_add_http_header('Content-Type', 'text/csv');
+  drupal_add_http_header('Content-Disposition', 'attachment;filename=hcbf_volunteer.csv');
+
+  $fp = fopen('php://output', 'w');
+
+  $header = array(
+    'name',
+    'dob',
+    'phone',
+    'email',
+    'shirt_size',
+    'shift',
+    'job',
+    'comments',
+  );
+
+  fputcsv($fp, $header);
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'hcbf_volunteer')
+    ->propertyOrderBy('created', 'DESC');
+
+  $result = $query->execute();
+  $volunteer_nids = array_keys($result['node']);
+
+  foreach ($volunteer_nids as $volunteer) {
+    $volunteer_entity = entity_metadata_wrapper('node', $volunteer);
+
+    $line = array(
+      $volunteer_entity->field_hcbf_volunteer_name->value(),
+      $volunteer_entity->field_hcbf_volunteer_dob->value(),
+      $volunteer_entity->field_hcbf_volunteer_phone->value(),
+      $volunteer_entity->field_hcbf_volunteer_email->value(),
+      $volunteer_entity->field_hcbf_volunteer_shirt->value(),
+      $volunteer_entity->field_hcbf_volunteer_shift->value(),
+      $volunteer_entity->field_hcbf_volunteer_job->value(),
+      $volunteer_entity->field_hcbf_volunteer_comments->value(),
+    );
+
+    fputcsv($fp, $line);
+  }
+
+  fclose($fp);
+  drupal_exit();
+}
+
+/**
  * Page callback for the breweries page.
  */
 function hcbf_volunteer_manage() {

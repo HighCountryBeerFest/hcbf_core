@@ -44,6 +44,13 @@ function hcbf_volunteers_menu() {
     'file' => 'hcbf_volunteers.pages.inc'
   );
 
+  $items['volunteer/export/hcbf_volunteer.csv'] = array(
+    'title' => 'Export volunteer',
+    'page callback' => 'hcbf_volunteer_export',
+    'access arguments' => array('manage volunteers'),
+    'file' => 'hcbf_volunteers.pages.inc'
+  );
+
   $items['volunteer/settings'] = array(
     'title' => t('Volunteer settings'),
     'descrption' => t('Settings for the volunteer section of the site.'),

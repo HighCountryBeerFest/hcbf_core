@@ -60,6 +60,7 @@
         <ul>
           <li class="lead">Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits, FOR FREE!</li>
           <li class="lead">Tipsy Taxi is providing FREE rides anywhere in Boone.</li>
+          <li class="lead">The Mountain Alliance will be shuttling folks from the Raley parking lot on campus.</li>
           <li class="lead">Designated Driver Tickets are only $10</li>
         </ul>
 
