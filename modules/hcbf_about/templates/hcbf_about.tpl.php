@@ -89,6 +89,14 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="page-header">
+          <h2>2014 High Country Beer Fest</h2>
+        </div>
+        <ul>
+          <li><a href="http://www.wataugademocrat.com/mountaintimes/article_9440570a-23de-11e4-bf6d-0019bb2963f4.html">Mountain Times: High Country Beer Fest returns Aug. 30</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="page-header">
           <h2>2013 High Country Beer Fest</h2>
         </div>
         <ul>
@@ -98,6 +106,9 @@
           <li>The Local Beer Blog <a href="http://www.localbeerblog.com/2013/09/high-country-craft-beer-festival-recap.html">recap of the festival</a>.</li>
         </ul>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="page-header">
           <h2>2012 High Country Beer Fest</h2>
@@ -106,9 +117,6 @@
           <li><a href="http://mountaintimes.com/community-events/articles/Beers-to-You-id-023162">Watauga Democrat</a>, August 9, 2012</li>
         </ul>
       </div>
-    </div>
-
-    <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="page-header">
           <h2>2011 High Country Beer Fest</h2>
@@ -120,6 +128,9 @@
           <li><a href="http://www.theappalachianonline.com/lifestyles/7731-high-country-beer-fest-features-music-food-beer-entertainment-education-as-well-as-beer">AppState's student newspaper</a> gets their word in on the 2011 festival</li>
         </ul>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="page-header">
           <h2>2010 High Country Beer Fest</h2>
@@ -134,10 +145,7 @@
           <li><a href="http://www.theappalachianonline.com/lifestyles/6399-high-country-beer-fest-satisfies-attendees-yet-again">AppState's student newspaper</a> reviews the 2010 festival</li>
         </ul>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-6">
         <div class="page-header">
           <h2>2009 High Country Beer Fest</h2>
         </div>
