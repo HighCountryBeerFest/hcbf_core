@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * The seminars module for the High Country Craft Food and Beverage Festival's website.
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function hcbf_seminars_menu() {
+  $items = array();
+
+  $items['seminars'] = array(
+    'title' => t('The seminars'),
+    'page callback' => 'hcbf_seminars',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'hcbf_seminars.pages.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function hcbf_seminars_theme() {
+  $themes = array();
+
+  $themes['hcbf_seminars'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_seminars',
+  );
+
+  return $themes;
+}
+
+

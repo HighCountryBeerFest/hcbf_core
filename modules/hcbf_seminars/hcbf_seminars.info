@@ -1,0 +1,5 @@
+name = High Country Beer Fest Seminars
+description = Provides the Seminars functionality for the High Country Beer Fest website.
+core = 7.x
+version = 7.x-1.x
+package = HCBF
