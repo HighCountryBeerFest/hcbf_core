@@ -93,6 +93,8 @@
         </div>
         <ul>
           <li><a href="http://www.wataugademocrat.com/mountaintimes/article_9440570a-23de-11e4-bf6d-0019bb2963f4.html">Mountain Times: High Country Beer Fest returns Aug. 30</a></li>
+          <li><a href="http://highcountry365.com/blog/for-the-love-of-beer/">High Country 365: For the Love of Beer</a></li>
+          <li><a href="http://www.hcpress.com/upcoming-events/high-country-beer-fest-features-the-music-of-jimbo-mathus-cary-hudson-grayson-capps-and-more-aug-30.html?fb_action_ids=10204631707337258&fb_action_types=og.comments&fb_source=aggregation&fb_aggregation_id=288381481237582">High Country Press: High Country Beer Fest Features The Music of Jimbo Mathus, Cary Hudson, Grayson Capps and More Aug. 30</a></li>
         </ul>
       </div>
       <div class="col-xs-12 col-sm-6">
