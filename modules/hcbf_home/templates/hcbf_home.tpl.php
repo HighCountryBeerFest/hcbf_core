@@ -20,7 +20,7 @@
           </div>
 
           <div class="row">
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-md-4">
               <div class="text-center">
                 <i class="icon fa fa-check-square fa-5x"></i>
               </div>
@@ -30,7 +30,7 @@
               <p class="lead">Remember to bring your ID, we check everyone's at the gate. We won't let you in if you don't have it or if you're under 21.</p>
             </div>
 
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-md-4">
               <div class="text-center">
                 <i class="icon fa fa-money fa-5x"></i>
               </div>
@@ -40,7 +40,7 @@
               <p class="lead">Most of our vendors won't have access to the internet during the festival, so cash is the way to go. It makes it easier for everyone.</p>
             </div>
 
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-md-4">
               <div class="text-center">
                 <i class="icon fa fa-thumbs-up fa-5x"></i>
               </div>
