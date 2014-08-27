@@ -26,7 +26,6 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-4">
-        <?php print render(hcbf_register_brewery_box(array(), array('well'), t('Register now'))); ?>
         <?php print render(hcbf_buy_tickets_box(array('well'))); ?>
       </div>
     </div>
