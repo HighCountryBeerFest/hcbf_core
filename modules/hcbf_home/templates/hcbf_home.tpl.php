@@ -63,7 +63,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <h3>Take the shuttle from campus</h3>
-              <p>The folks at River and Earth Adventures will have shuttle service going from the Raley Parking lot on Appalachian State University's campus to the Fairgrounds.</p>
+              <p>The folks at River and Earth Adventures will have shuttle service from 2:00pm to 8:00pm going from the Raley Parking lot on Appalachian State University's campus to the Fairgrounds.</p>
               <p>We have a limited amount of seating on the buses.</p>
               <iframe
                 width="100%"
@@ -75,7 +75,7 @@
             </div>
             <div class="col-xs-12 col-sm-6">
               <h3>Take the shuttle from your hotel</h3>
-              <p>If you're staying at the Country Inn or La Quinta our friends at the Mountain Alliance will come and pick you up.</p>
+              <p>If you're staying at the Country Inn or La Quinta our friends at the Mountain Alliance will come and pick you up starting at 2:00pm.</p>
               <p>Please do not park here if you are not staying at the hotels.</p>
 
               <h3>Get a designated driver</h3>
