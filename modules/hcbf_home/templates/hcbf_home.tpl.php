@@ -1,5 +1,15 @@
 <div id="getting-there-wrapper" class="wrapper">
   <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="jumbotron">
+          <h1>There will be tickets available at the gate!</h1>
+          <p class="lead">We'll have tickets available for purchase at the gate, we will not be taking cards so bring cash.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-xs-12 col-sm-3">
         <?php print render(hcbf_the_festivities_box()); ?>
