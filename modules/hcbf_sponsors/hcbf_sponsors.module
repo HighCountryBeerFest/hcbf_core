@@ -33,6 +33,15 @@ function hcbf_sponsors_permission() {
 function hcbf_sponsors_menu() {
   $items = array();
 
+  $items['admin/config/hcbf/sponsors'] = array(
+    'title' => 'Sponsors',
+    'description' => 'Configuration for the High Country Beer Fest sponsor functionality.',
+    'page callback' => 'hcbf_sponsors_manage',
+    'access arguments' => array('manage sponsors'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'hcbf_sponsors.admin.inc',
+  );
+
   $items['sponsors'] = array(
     'title' => t('Our sponsors'),
     'page callback' => 'hcbf_sponsors',
@@ -68,6 +77,57 @@ function hcbf_sponsors_theme() {
     'template' => 'templates/hcbf_sponsors',
   );
 
+  $themes['hcbf_sponsor_registration'] = array(
+    'variables' => array(
+      'classes' => NULL,
+    ),
+    'template' => 'templates/hcbf_sponsor_registration',
+  );
+
+  $themes['hcbf_sponsors_manage'] = array(
+    'variables' => array(
+      'sponsors' => NULL,
+    ),
+    'template' => 'templates/hcbf_sponsors_manage',
+  );
+
   return $themes;
 }
 
+/**
+ * Gets the current festival sponsors.
+ */
+function hcbf_sponsors_current() {
+  $key = __FUNCTION__;
+  $sponsor_data = &drupal_static($key);
+
+  $sponsors = array();
+  if (!isset($sponsor_data)) {
+    if ($cache = cache_get($key)) {
+      $sponsors = $cache->data;
+    }
+    else {
+      $current_festival = variable_get('hcbf_current_festival', 0);
+      if ($current_festival != 0) {
+        $sponsor_query = new EntityFieldQuery();
+        $sponsor_query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'hcbf_sponsor')
+          ->propertyCondition('status', 1)
+          ->fieldCondition('field_hcbf_sponsor_festival', 'target_id', $current_festival, '=')
+          ->propertyOrderBy('created', 'DESC');
+
+        $sponsor_result = $sponsor_query->execute();
+        $sponsor_nids = array_keys($sponsor_result['node']);
+
+        foreach ($sponsor_nids as $sponsor_nid) {
+          $sponsor_entity = entity_metadata_wrapper('node', $sponsor_nid);
+          $sponsors[] = array(
+            'name' => $sponsor_entity->label(),
+          );
+        }
+      }
+      cache_set($key, $sponsors);
+    }
+  }
+  return $sponsors;
+}

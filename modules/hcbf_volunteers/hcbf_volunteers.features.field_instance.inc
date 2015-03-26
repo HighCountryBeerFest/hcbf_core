@@ -166,6 +166,46 @@ function hcbf_volunteers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-hcbf_volunteer-field_hcbf_volunteer_gender'
+  $field_instances['node-hcbf_volunteer-field_hcbf_volunteer_gender'] = array(
+    'bundle' => 'hcbf_volunteer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_hcbf_volunteer_gender',
+    'label' => 'Gender',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'node-hcbf_volunteer-field_hcbf_volunteer_job'
   $field_instances['node-hcbf_volunteer-field_hcbf_volunteer_job'] = array(
     'bundle' => 'hcbf_volunteer',
@@ -410,6 +450,7 @@ function hcbf_volunteers_field_default_field_instances() {
   t('Comments');
   t('Date of birth');
   t('Email');
+  t('Gender');
   t('Have you volunteered before?');
   t('Job');
   t('Name');

@@ -33,8 +33,17 @@ function hcbf_breweries_permission() {
 function hcbf_breweries_menu() {
   $items = array();
 
+  $items['admin/config/hcbf/breweries'] = array(
+    'title' => 'Breweries',
+    'description' => 'Configuration for the High Country Beer Fest breweries functionality.',
+    'page callback' => 'hcbf_breweries_manage',
+    'access arguments' => array('manage breweries'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'hcbf_breweries.admin.inc',
+  );
+
   $items['breweries'] = array(
-    'title' => 'Participating Breweries',
+    'title' => 'Breweries',
     'page callback' => 'hcbf_breweries',
     'access arguments' => array('access breweries'),
     'file' => 'hcbf_breweries.pages.inc'
@@ -46,13 +55,6 @@ function hcbf_breweries_menu() {
     'page arguments' => array('hcbf_brewery_registration_form'),
     'access arguments' => array('access breweries registration'),
     'file' => 'hcbf_breweries.forms.inc'
-  );
-
-  $items['breweries/manage'] = array(
-    'title' => 'Manage breweries',
-    'page callback' => 'hcbf_breweries_manage',
-    'access arguments' => array('manage breweries'),
-    'file' => 'hcbf_breweries.pages.inc'
   );
 
   $items['breweries/export/hcbf_breweries.csv'] = array(
@@ -85,8 +87,22 @@ function hcbf_breweries_theme() {
     'template' => 'templates/hcbf_breweries',
   );
 
+  $themes['hcbf_breweries_registration'] = array(
+    'variables' => array(),
+    'template' => 'templates/hcbf_breweries_registration',
+  );
+
+  $themes['hcbf_breweries_on_sale'] = array(
+    'variables' => array(
+      'wrapper_classes' => NULL,
+    ),
+    'template' => 'templates/hcbf_breweries_on_sale',
+  );
+
   $themes['hcbf_breweries_manage'] = array(
-    'variables' => array('breweries' => NULL),
+    'variables' => array(
+      'breweries' => NULL,
+    ),
     'template' => 'templates/hcbf_breweries_manage',
   );
 
@@ -130,4 +146,65 @@ function hcbf_breweries_send_mail($form_values) {
   if ($result['result'] != TRUE) {
     drupal_set_message(t('There was a problem sending your message and it was not sent, but you are in the system. If we do not contact you, use the contact form on this site to contact us.'), 'error');
   }
+}
+
+/**
+ * Implements hook_entity_update()
+ */
+function hcbf_breweries_entity_update($entity, $type) {
+  if ($entity->type == 'hcbf_brewery') {
+    cache_clear_all('hcbf_breweries_current', 'cache', TRUE);
+    drupal_set_message(t('Cleared brewery cache.'));
+  }
+}
+
+/**
+ * Gets the current festival breweries.
+ */
+function hcbf_breweries_current($festival_nid=NULL) {
+  $key = __FUNCTION__;
+
+  $current_festival = variable_get('hcbf_current_festival', 0);
+
+  // If a $festival_nid is passed, it should use that as the current year
+  // and set the cache_key accordingly.
+  if (!is_null($festival_nid) && is_int($festival_nid)) {
+    $key .= '_' . $festival_nid;
+    $current_festival = $festival_nid;
+  }
+
+  $brewery_data = &drupal_static(__FUNCTION__);
+
+  $breweries = array();
+  if (!isset($brewery_data)) {
+    if ($cache = cache_get($key)) {
+      $breweries = $cache->data;
+    }
+    else {
+      if ($current_festival != 0) {
+        $brewery_query = new EntityFieldQuery();
+        $brewery_query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'hcbf_brewery')
+          ->propertyCondition('status', 1)
+          ->fieldCondition('field_hcbf_brewery_festival', 'target_id', $current_festival, '=')
+          ->propertyOrderBy('title', 'ASC');
+
+        $brewery_result = $brewery_query->execute();
+        $brewery_nids = array_keys($brewery_result['node']);
+
+        foreach ($brewery_nids as $brewery_nid) {
+          $brewery_entity = entity_metadata_wrapper('node', $brewery_nid);
+          $breweries[] = array(
+            'name' => $brewery_entity->label(),
+            'nid' => $brewery_entity->nid->value(),
+            'location' => $brewery_entity->field_hcbf_brewery_brewery_city->value() . ', ' . $brewery_entity->field_hcbf_brewery_brewery_state->value(),
+            'link' => l($brewery_entity->label(), $brewery_entity->field_hcbf_brewery_brewery_url->value()),
+            'logo' => '<img src=' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . ' class="img-responsive center-block" />',
+          );
+        }
+      }
+      cache_set($key, $breweries);
+    }
+  }
+  return $breweries;
 }

@@ -5,6 +5,48 @@
  */
 
 /**
+ * Implements hook_permission();
+ */
+function hcbf_core_permission() {
+  $permissions = array();
+
+  $permissions['manage hcbf core'] = array(
+    'title' => t('Manage the HCBF Core module'),
+  );
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_menu();
+ */
+function hcbf_core_menu() {
+  $items = array();
+
+  $items['admin/config/hcbf'] = array(
+    'title' => 'High Country Beer Fest',
+    'description' => 'High Country Beer Fest configuration.',
+    'position' => 'right',
+    'weight' => -20,
+    'page callback' => 'hcbf_core_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'hcbf_core.admin.inc',
+  );
+
+  $items['admin/config/hcbf/core'] = array(
+    'title' => 'Core config',
+    'description' => 'Configuration for the High Country Beer Fest site.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hcbf_core_admin'),
+    'access arguments' => array('manage hcbf core'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'hcbf_core.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Gets a count of the currently published breweries.
  */
 function hcbf_get_brewery_count() {
@@ -109,321 +151,6 @@ function hcbf_link_box_generator($box) {
         ),
       ),
       $box_content,
-    ),
-  );
-
-  return $dom;
-}
-
-/**
- * Generates the 'Sponsor signup' box.
- *
- * Usage:
- *     $box = hcbf_register_sponsor_box(array('foo', 'bar'));
- *
- * @param $button_classes array
- *   An array of classes that will be added to the box after it's rendered.
- *
- * @param $extra_classes array
- *   An array of classes that will be added to the box after it's rendered.
- *
- * @param $button_text string
- *   A string with button text if it differs from the default.
- *
- * @param $description_text string
- *   A string with description text if it differs from the default.
- *
- * @return array
- *   A renderable array that contains the content for the "buy tickets" box.
- */
-function hcbf_register_sponsor_box($button_classes, $extra_classes, $button_text, $description_text = NULL) {
-  // Set the classes
-  $classes = array('register-sponsor-wrapper');
-  if (!empty($extra_classes)) {
-    $classes = array_merge($classes, $extra_classes);
-  }
-  $classes = implode(' ', $classes);
-
-  $sponsor_class = array('btn-success', 'btn');
-  if (!empty($button_classes)) {
-    $sponsor_class = array_merge($sponsor_class, $button_classes);
-  }
-  $sponsor_class = implode(' ', $sponsor_class);
-
-  $sponsor_text = t('I\'d like to sponsor the Beer Fest');
-  if ($button_text) {
-    $sponsor_text = $button_text;
-  }
-
-  $sponsor_description = t('We have plenty of sponsorship opportunities, contact us and we\'ll let you know how you can help out.');
-  if ($description_text) {
-    $sponsor_description = $description_text;
-  }
-
-  $sponsor_link = l(
-    $sponsor_text,
-    'sponsors/register',
-    array(
-      'attributes' => array(
-        'class' => $sponsor_class,
-      )
-    )
-  );
-
-  // Generate the dom
-  $dom = array(
-    array(
-      '#type' => 'markup',
-      '#prefix' => '<div class="' . $classes . '">',
-      '#suffix' => '</div>',
-      array(
-        '#type' => 'markup',
-        '#markup' => t('Do you want to be a sponsor?'),
-        '#prefix' => '<h1 class="heading text-center">',
-        '#suffix' => '</h1>',
-      ),
-      array(
-        '#type' => 'markup',
-        '#markup' => $sponsor_description,
-        '#prefix' => '<p class="lead text-center">',
-        '#suffix' => '</p>'
-      ),
-      array(
-        '#type' => 'markup',
-        '#prefix' => '<p class="text-center">',
-        '#suffix' => '</p>',
-        array(
-          '#type' => 'markup',
-          '#markup' => $sponsor_link,
-        ),
-      ),
-    ),
-  );
-
-  return $dom;
-}
-
-/**
- * Generates the 'Get Involved' box
- */
-
-
-/**
- * Generates the 'Register brewery' box.
- *
- * Usage:
- *     $box = hcbf_register_brewery_box(array('foo', 'bar'));
- *
- * @param $button_classes array
- *   An array of classes that will be added to the box after it's rendered.
- *
- * @param $extra_classes array
- *   An array of classes that will be added to the box after it's rendered.
- *
- * @param $button_text string
- *   A string with button text if it differs from the default.
- *
- * @return array
- *   A renderable array that contains the content for the "buy tickets" box.
- */
-function hcbf_register_brewery_box($button_classes, $extra_classes, $button_text) {
-  // Set the classes
-  $classes = array('register-brewery-wrapper');
-  if (!empty($extra_classes)) {
-    $classes = array_merge($classes, $extra_classes);
-  }
-  $classes = implode(' ', $classes);
-
-  $register_class = array('btn-success', 'btn');
-  if (!empty($button_classes)) {
-    $register_class = array_merge($register_class, $button_classes);
-  }
-  $register_class = implode(' ', $register_class);
-
-  $register_text = t('I\'d like to register my brewery');
-  if ($button_text) {
-    $register_text = $button_text;
-  }
-
-  $register_link = l(
-    $register_text,
-    'breweries/register',
-    array(
-      'attributes' => array(
-        'class' => $register_class,
-      )
-    )
-  );
-
-  // Generate the dom
-  $dom = array(
-    array(
-      '#type' => 'markup',
-      '#prefix' => '<div class="' . $classes . '">',
-      '#suffix' => '</div>',
-      array(
-        '#type' => 'markup',
-        '#markup' => t('Want to serve your beer?'),
-        '#prefix' => '<h1 class="heading text-center">',
-        '#suffix' => '</h1>',
-      ),
-      array(
-        '#type' => 'markup',
-        '#markup' => t('We\'d love to have your beer! We\'re looking for craft breweries who want to participate in this year\'s High Country Beer Fest.'),
-        '#prefix' => '<p class="lead text-center">',
-        '#suffix' => '</p>'
-      ),
-      array(
-        '#type' => 'markup',
-        '#prefix' => '<p class="text-center">',
-        '#suffix' => '</p>',
-        array(
-          '#type' => 'markup',
-          '#markup' => $register_link,
-        ),
-      ),
-    ),
-  );
-
-  return $dom;
-}
-
-/**
- * Generates the 'Buy tickets' box.
- *
- * Usage:
- *     $box = hcbf_buy_tickets_box(array(
- *       'wrapper-classes', array('well'),
- *     ));
- *
- * @param $extra_classes array
- *   An array of classes that will be added to the box after it's rendered.
- *
- * @return array
- *   A renderable array that contains the content for the "buy tickets" box.
- */
-function hcbf_buy_tickets_box($extra_classes) {
-
-  // Set the classes
-  $classes = array('buy-tickets-wrapper');
-  if (!empty($extra_classes)) {
-    $classes = array_merge($classes, $extra_classes);
-  }
-  $classes = implode(', ', $classes);
-
-  // Generate the links for ticket types
-  $general_admission = l(
-    t('$40.00'),
-    'http://www.etix.com/ticket/online/performanceSearch.jsp?performance_id=1820947',
-    array(
-      'attributes' => array(
-        'class' => 'btn btn-success btn-sm'
-      )
-    )
-  );
-
-  $designated_driver = l(
-    t('$10.00'),
-    'http://www.etix.com/ticket/online/performanceSearch.jsp?performance_id=1821065',
-    array(
-      'attributes' => array(
-        'class' => 'btn btn-success btn-sm'
-      )
-    )
-  );
-
-  // Set the description text
-  $peabodys_link = l(t("Peabody's"), 'http://peabodyswineandbeer.com/');
-  $benchmark_link = l(t('Benchmark Provisions'), 'https://www.facebook.com/benchmarkprovisions');
-  $descrption = 'Tickets are on sale now! You can also buy paper tickets at ' . $peabodys_link . ' and ' . $benchmark_link . ' if you\'re in town.';
-
-  // Generate the dom
-  $dom = array(
-    array(
-      '#type' => 'markup',
-      '#prefix' => '<div class="' . $classes . '">',
-      '#suffix' => '</div>',
-      array(
-        '#type' => 'markup',
-        '#prefix' => '<div class="text-center">',
-        '#suffix' => '</div>',
-        array(
-          '#type' => 'markup',
-          '#prefix' => '<i class="icon fa fa-ticket fa-5x">',
-          '#suffix' => '</i>',
-        ),
-      ),
-
-      array(
-        '#type' => 'markup',
-        '#prefix' => '<div class="page-header">',
-        '#suffix' => '</div>',
-        array(
-          '#type' => 'markup',
-          '#markup' => t('Buy Tickets'),
-          '#prefix' => '<h2 class="text-center">',
-          '#suffix' => '</h2>',
-        ),
-      ),
-
-      array(
-        '#type' => 'markup',
-        '#markup' => $descrption,
-        '#prefix' => '<p>',
-        '#suffix' => '</p>',
-      ),
-      array(
-        '#type' => 'markup',
-        '#prefix' => '<div class="table-responsive">',
-        '#suffix' => '</div>',
-        array(
-          '#type' => 'markup',
-          '#prefix' => '<table class="table ticket-table">',
-          '#suffix' => '</table>',
-          array(
-            '#type' => 'markup',
-            '#prefix' => '<tbody>',
-            '#suffix' => '</tbody>',
-
-            array(
-              '#type' => 'markup',
-              '#prefix' => '<tr>',
-              '#suffix' => '</tr>',
-              array(
-                '#type' => 'markup',
-                '#markup' => 'General Admission',
-                '#prefix' => '<td>',
-                '#suffix' => '</td>',
-              ),
-              array(
-                '#type' => 'markup',
-                '#markup' => $general_admission,
-                '#prefix' => '<td>',
-                '#suffix' => '</td>',
-              ),
-            ),
-
-            array(
-              '#type' => 'markup',
-              '#prefix' => '<tr>',
-              '#suffix' => '</tr>',
-              array(
-                '#type' => 'markup',
-                '#markup' => 'Designated Driver',
-                '#prefix' => '<td>',
-                '#suffix' => '</td>',
-              ),
-              array(
-                '#type' => 'markup',
-                '#markup' => $designated_driver,
-                '#prefix' => '<td>',
-                '#suffix' => '</td>',
-              ),
-            ),
-
-          ),
-        ),
-      ),
     ),
   );
 

@@ -11,6 +11,10 @@
       <div class="col-xs-12 col-sm-6 col-lg-8">
         <div class="container-fluid">
 
+          <?php if (empty($breweries)): ?>
+            <h1>We're announcing participating breweries soon!</h1>
+          <?php endif; ?>
+
           <?php foreach ($breweries as $breweries_row) { ?>
             <div class="row brewery-row">
               <?php foreach ($breweries_row as $brewery) { ?>
@@ -26,7 +30,7 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-4">
-        <?php print render(hcbf_buy_tickets_box(array('well'))); ?>
+        <?php print theme('hcbf_breweries_on_sale', array('wrapper_classes' => 'well')); ?>
       </div>
     </div>
   </div>

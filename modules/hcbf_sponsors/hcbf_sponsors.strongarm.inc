@@ -14,7 +14,7 @@ function hcbf_sponsors_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ant_hcbf_sponsor';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['ant_hcbf_sponsor'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -57,6 +57,9 @@ function hcbf_sponsors_strongarm() {
       'form' => array(
         'title' => array(
           'weight' => '-5',
+        ),
+        'path' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

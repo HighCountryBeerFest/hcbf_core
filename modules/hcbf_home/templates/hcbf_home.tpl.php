@@ -1,20 +1,35 @@
-<div id="getting-there-wrapper" class="wrapper">
+<div id="current-year-wrapper" class="wrapper jumbotron">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Join us on August 29<sup>th</sup>, 2015 for 8<sup>th</sup> annual High Country Beer Fest in Boone, NC.</h1>
+        <p class="lead">Check back later for more information.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div id="getting-there-wrapper" class="wrapper" style="display:none">
   <div class="container">
 
     <div class="row">
       <div class="col-xs-12">
         <div class="jumbotron">
-          <h1>There will be tickets available at the gate!</h1>
-          <p class="lead">We'll have tickets available for purchase at the gate, we will not be taking cards so bring cash.</p>
+          <h1>Join us for the 2015 High Country Beer Fest</h1>
+          <p class="lead">Check back later for more information.</p>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-12 col-sm-3">
-        <?php print render(hcbf_the_festivities_box()); ?>
+        <?php //print render(hcbf_the_festivities_box()); ?>
         <hr />
-        <?php print render(hcbf_buy_tickets_box()); ?>
+        <?php print theme('hcbf_breweries_on_sale', array('classes' => 'well')); ?>
       </div>
 
       <div class="col-xs-12 col-sm-9">
@@ -127,10 +142,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
-        <?php print render(hcbf_register_brewery_box(array('btn-lg'))); ?>
+        <?php print theme('hcbf_breweries_registration'); ?>
       </div>
       <div class="col-xs-12 col-md-6">
-        <?php print render(hcbf_register_sponsor_box(array('btn-lg'))); ?>
+        <?php print theme('hcbf_sponsor_registration'); ?>
       </div>
     </div>
   </div>

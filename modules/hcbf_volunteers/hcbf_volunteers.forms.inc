@@ -18,9 +18,9 @@ function hcbf_volunteer_form($form, &$form_state) {
     '#suffix' => '</div></div></div></div>'
   );
 
-  if (variable_get('hcbf_volunteer_active', 0) == 1) {
+  if (variable_get('hcbf_volunteer_registration', 0) == 1) {
     $form['info'] = array(
-      '#markup' => variable_get('hcbf_volunteer_intro', 'Fill out this form to volunteer for the High Country Craft Food and Beverage Festival.'),
+      '#markup' => 'Do you want to get involved and volunteer at the High Country Beer Fest? All you have to do is fill out this form and we\'ll get back to you with more information.',
       '#prefix' => '<p>',
       '#suffix' => '</p>',
     );
@@ -166,34 +166,3 @@ function hcbf_volunteer_form_submit($form, &$form_state) {
 
   // Notify the responsable role a volunteer has volunteered
 }
-
-/**
- * Callback for the volunteer/settings form.
- */
-function hcbf_volunteer_settings_form() {
-  $form = array(
-    '#attributes' => array('role' => array('form')),
-    '#prefix' => '<div id="volunteer-register-wrapper" class="wrapper"><div class="container"><div class="row"><div class="col-xs-12">',
-    '#suffix' => '</div></div></div></div>'
-  );
-
-  $form['hcbf_volunteer_active'] = array(
-    '#type' => 'radios',
-    '#title' => t('Is volunteer active?'),
-    '#default_value' => variable_get('hcbf_volunteer_active', 0),
-    '#options' => array(
-      0 => t('No'),
-      1 => t('Yes')
-    ),
-  );
-
-  $form['hcbf_volunteer_intro'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Intro message'),
-    '#default_value' => variable_get('hcbf_volunteer_intro', ''),
-    '#description' => t('This message displays on the top of the Volunteer form.')
-  );
-
-  return system_settings_form($form);
-}
-
