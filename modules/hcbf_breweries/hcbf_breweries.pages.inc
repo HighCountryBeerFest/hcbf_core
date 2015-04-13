@@ -113,6 +113,8 @@ function hcbf_breweries() {
     );
   }
 
-  $breweries = array_chunk($breweries, 3);
+  if (!empty($breweries)) {
+    $breweries = array_chunk($breweries, 3);
+  }
   return theme('hcbf_breweries', array('breweries' => $breweries));
 }

@@ -15,5 +15,10 @@ function hcbf_breweries_manage() {
     $theme_args['breweries'] = $breweries;
   }
 
+  $all_breweries = hcbf_breweries_all();
+  if ($all_breweries) {
+    $theme_args['all_breweries'] = $all_breweries;
+  }
+
   return theme('hcbf_breweries_manage', $theme_args);
 }

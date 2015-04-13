@@ -49,30 +49,6 @@ function hcbf_breweries_menu() {
     'file' => 'hcbf_breweries.pages.inc'
   );
 
-  $items['breweries/register'] = array(
-    'title' => 'Register as a brewery',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('hcbf_brewery_registration_form'),
-    'access arguments' => array('access breweries registration'),
-    'file' => 'hcbf_breweries.forms.inc'
-  );
-
-  $items['breweries/export/hcbf_breweries.csv'] = array(
-    'title' => 'Export breweries',
-    'page callback' => 'hcbf_breweries_export',
-    'access arguments' => array('manage breweries'),
-    'file' => 'hcbf_breweries.pages.inc'
-  );
-
-  $items['breweries/settings'] = array(
-    'title' => 'Breweries settings',
-    'descrption' => t('Settings for the breweries section of the site.'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('hcbf_breweries_settings_form'),
-    'access arguments' => array('manage breweries'),
-    'file' => 'hcbf_breweries.forms.inc'
-  );
-
   return $items;
 }
 
@@ -101,6 +77,7 @@ function hcbf_breweries_theme() {
 
   $themes['hcbf_breweries_manage'] = array(
     'variables' => array(
+      'all_breweries' => NULL,
       'breweries' => NULL,
     ),
     'template' => 'templates/hcbf_breweries_manage',
@@ -152,10 +129,53 @@ function hcbf_breweries_send_mail($form_values) {
  * Implements hook_entity_update()
  */
 function hcbf_breweries_entity_update($entity, $type) {
-  if ($entity->type == 'hcbf_brewery') {
-    cache_clear_all('hcbf_breweries_current', 'cache', TRUE);
-    drupal_set_message(t('Cleared brewery cache.'));
+  if (isset($entity->type)) {
+    if ($entity->type == 'hcbf_brewery') {
+      cache_clear_all('hcbf_breweries_current', 'cache', TRUE);
+      drupal_set_message(t('Cleared brewery cache.'));
+    }
   }
+}
+
+/**
+ * Gets all of the festival breweries.
+ */
+function hcbf_breweries_all() {
+  $key = __FUNCTION__;
+  $brewery_data = &drupal_static(__FUNCTION__);
+
+  $breweries = array();
+  if (!isset($brewery_data)) {
+    if ($cache = cache_get($key)) {
+      $breweries = $cache->data;
+    }
+    else {
+      $brewery_query = new EntityFieldQuery();
+      $brewery_query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'hcbf_brewery')
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('title', 'ASC');
+      $brewery_result = $brewery_query->execute();
+
+      if (!empty($brewery_result)) {
+        $brewery_nids = array_keys($brewery_result['node']);
+
+        foreach ($brewery_nids as $brewery_nid) {
+          $brewery_entity = entity_metadata_wrapper('node', $brewery_nid);
+          $breweries[] = array(
+            'name' => $brewery_entity->label(),
+            'nid' => $brewery_entity->nid->value(),
+            'location' => $brewery_entity->field_hcbf_brewery_brewery_city->value() . ', ' . $brewery_entity->field_hcbf_brewery_brewery_state->value(),
+            'link' => l($brewery_entity->label(), $brewery_entity->field_hcbf_brewery_brewery_url->value()),
+            'logo' => '<img src=' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . ' class="img-responsive center-block" />',
+          );
+        }
+      }
+      
+      cache_set($key, $breweries);
+    }
+  }
+  return $breweries;
 }
 
 /**
@@ -188,19 +208,21 @@ function hcbf_breweries_current($festival_nid=NULL) {
           ->propertyCondition('status', 1)
           ->fieldCondition('field_hcbf_brewery_festival', 'target_id', $current_festival, '=')
           ->propertyOrderBy('title', 'ASC');
-
         $brewery_result = $brewery_query->execute();
-        $brewery_nids = array_keys($brewery_result['node']);
 
-        foreach ($brewery_nids as $brewery_nid) {
-          $brewery_entity = entity_metadata_wrapper('node', $brewery_nid);
-          $breweries[] = array(
-            'name' => $brewery_entity->label(),
-            'nid' => $brewery_entity->nid->value(),
-            'location' => $brewery_entity->field_hcbf_brewery_brewery_city->value() . ', ' . $brewery_entity->field_hcbf_brewery_brewery_state->value(),
-            'link' => l($brewery_entity->label(), $brewery_entity->field_hcbf_brewery_brewery_url->value()),
-            'logo' => '<img src=' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . ' class="img-responsive center-block" />',
-          );
+        if (!empty($brewery_result)) {
+          $brewery_nids = array_keys($brewery_result['node']);
+
+          foreach ($brewery_nids as $brewery_nid) {
+            $brewery_entity = entity_metadata_wrapper('node', $brewery_nid);
+            $breweries[] = array(
+              'name' => $brewery_entity->label(),
+              'nid' => $brewery_entity->nid->value(),
+              'location' => $brewery_entity->field_hcbf_brewery_brewery_city->value() . ', ' . $brewery_entity->field_hcbf_brewery_brewery_state->value(),
+              'link' => l($brewery_entity->label(), $brewery_entity->field_hcbf_brewery_brewery_url->value()),
+              'logo' => '<img src=' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . ' class="img-responsive center-block" />',
+            );
+          }
         }
       }
       cache_set($key, $breweries);

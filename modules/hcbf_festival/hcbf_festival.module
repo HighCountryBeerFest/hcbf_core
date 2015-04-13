@@ -40,17 +40,10 @@ function hcbf_festival_current() {
         // Add the status of ticket sales.
         $event['tickets_on_sale'] = variable_get('hcbf_core_on_sale', 0);
 
-        if (module_exists('hcbf_sponsors')) {
-          $event['sponsors'] = hcbf_sponsors_current();
-        }
-        if (module_exists('hcbf_breweries')) {
-          $event['breweries'] = hcbf_breweries_current();
-        }
         cache_set($key, $event);
       }
     }
   }
 
-  dpm($event);
   return $event;
 }
