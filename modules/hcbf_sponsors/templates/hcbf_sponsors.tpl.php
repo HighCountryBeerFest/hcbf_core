@@ -12,42 +12,35 @@
         <div class="container-fluid">
           <?php if (empty($sponsors)): ?>
             <h1>We're announcing sponsors soon!</h1>
-          <?php endif; ?>
+          <?php else: ?>
+            <?php foreach ($sponsors as $level => $level_sponsors): ?>
 
-          <?php foreach ($sponsors as $level => $level_sponsors): ?>
-
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="page-header">
-                  <h2><?php print $level; ?> Sponsors</h2>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="page-header">
+                    <h2><?php print $level; ?> Sponsors</h2>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row sponsors-row">
-              <?php $level_sponsors = array_chunk($level_sponsors, 2); ?>
-              <?php foreach ($level_sponsors as $sponsor): ?>
-                <?php foreach ($sponsor as $s): ?>
-                  <div class="col-sm-12 col-sm-6">
-                    <div class="text-center">
-                      <?php print $s['logo']; ?>
+              <div class="row sponsors-row">
+                <?php $level_sponsors = array_chunk($level_sponsors, 2); ?>
+                <?php foreach ($level_sponsors as $sponsor): ?>
+                  <?php foreach ($sponsor as $s): ?>
+                    <div class="col-sm-12 col-sm-6">
+                      <div class="text-center">
+                        <?php print $s['logo']; ?>
+                      </div>
+                      <h2 class="text-center">
+                        <?php print l($s['name'], $s['link']); ?>
+                      </h2>
                     </div>
-                    <h2 class="text-center">
-                      <?php print l($s['name'], $s['link']); ?>
-                    </h2>
-                  </div>
+                  <?php endforeach; ?>
                 <?php endforeach; ?>
-              <?php endforeach; ?>
+              </div>
 
-              <?php foreach ($sponsors_row as $sponsor) { ?>
-                <div class="col-sm-12 col-sm-6">
-                  <?php print render($sponsor['logo']); ?>
-                  <?php print render($sponsor['title']); ?>
-                </div>
-              <?php }; ?>
-            </div>
-
-          <?php endforeach; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
       </div>
       <div class="col-sm-12 col-lg-4">
