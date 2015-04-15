@@ -14,6 +14,9 @@ function hcbf_breweries_manage() {
   if ($breweries) {
     $theme_args['breweries'] = $breweries;
   }
+  else {
+    drupal_set_message(t('There are no breweries registered for this year\'s festival.'), 'warning');
+  }
 
   $all_breweries = hcbf_breweries_all();
   if ($all_breweries) {

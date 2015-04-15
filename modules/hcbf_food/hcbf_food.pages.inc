@@ -16,53 +16,32 @@ function hcbf_food() {
   $result = $query->execute();
   $food_nids = array_keys($result['node']);
 
-  $foods = array();
-  foreach ($food_nids as $food) {
-    $food_entity = entity_metadata_wrapper('node', $food);
-    $food_image = '<img src=' . image_style_url('medium', $food_entity->field_hcbf_food_image->value()['uri']) . ' class="img-responsive center-block" />';
+  $food_entities = hcbf_food_current();
 
-    $new_food = array(
+  $foods = array();
+  foreach ($food_entities as $food) {
+
+    $foods[] = array(
       'image' => array(
         '#type' => 'markup',
-        '#markup' => $food_image,
+        '#markup' => $food['image'],
         '#prefix' => '<div class="text-center">',
         '#suffix' => '</div>'
       ),
       'title' => array(
         '#type' => 'markup',
-        '#markup' => $food_entity->label(),
+        '#markup' => l($food['title'], $food['link']),
         '#prefix' => '<h2>',
         '#suffix' => '</h2>',
       ),
       'description' => array(
         '#type' => 'markup',
-        '#markup' => $food_entity->field_hcbf_food_description->value(),
+        '#markup' => $food['description'],
         '#prefix' => '<p class="lead">',
         '#suffix' => '</p>'
       ),
-      'website' => array(),
     );
-
-    $food_website = $food_entity->field_hcbf_food_website->value();
-    if ($food_website) {
-      $new_food['website'] = array(
-        '#type' => 'markup',
-        '#markup' => l(t('View website'), 
-          $food_entity->field_hcbf_food_website->url->value(),
-          array(
-            'attributes' => array(
-              'class' => array('btn', 'btn-default'),
-            ),
-          )
-        ),
-        '#prefix' => '<p>',
-        '#suffix' => '</p>'
-      );
-    }
-    $foods[] = $new_food;
   }
 
   return theme('hcbf_food', array('foods' => $foods));
 }
-
-

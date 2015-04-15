@@ -14,6 +14,9 @@ function hcbf_music_manage() {
   if ($music) {
     $theme_args['music'] = $music;
   }
+  else {
+    drupal_set_message(t('There are no music acts registered for this year\'s festival.'), 'warning');
+  }
 
   $all_music = hcbf_music_all();
   if ($all_music) {

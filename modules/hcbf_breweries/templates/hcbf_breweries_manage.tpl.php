@@ -1,9 +1,6 @@
-<div class="breweries">
-  <h2>Current breweries</h2>
-
-  <?php if (empty($breweries)): ?>
-    <h3>There are no breweries signed up yet.</h3>
-  <?php else: ?>
+<?php if (!empty($breweries)): ?>
+  <div class="breweries">
+    <h2>Registered breweries</h2>
     <table>
       <thead>
         <tr>
@@ -22,9 +19,12 @@
           </tr>
         </tr>
         <?php endforeach; ?>
+      </tbody>
     </table>
-  <?php endif; ?>
+  </div>
+<?php endif; ?>
 
+<div class="all-breweries">
   <h2>All breweries</h2>
 
   <?php if (empty($all_breweries)): ?>
@@ -48,10 +48,10 @@
           </tr>
         </tr>
         <?php endforeach; ?>
+      </tbody>
     </table>
   <?php endif; ?>
   <ul class="action-links">
     <li><?php print l(t('Add a brewery'), 'node/add/hcbf-brewery'); ?></li>
   </ul>
-
 </div>

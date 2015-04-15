@@ -7,10 +7,36 @@
 include_once 'hcbf_food.features.inc';
 
 /**
+ * Implements hook_permission()
+ */
+function hcbf_food_permission() {
+  $permissions = array();
+
+  $permissions['manage food'] = array(
+    'title' => t('Manage food')
+  );
+
+  $permissions['access food'] = array(
+    'title' => t('Access food')
+  );
+
+  return $permissions;
+}
+
+/**
  * Implements hook_menu()
  */
 function hcbf_food_menu() {
   $items = array();
+
+  $items['admin/config/hcbf/food'] = array(
+    'title' => 'Food',
+    'description' => 'Configuration for the High Country Beer Fest food functionality.',
+    'page callback' => 'hcbf_food_manage',
+    'access arguments' => array('manage food'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'hcbf_food.admin.inc',
+  );
 
   $items['food'] = array(
     'title' => t('The food'),
@@ -36,6 +62,118 @@ function hcbf_food_theme() {
     'template' => 'templates/hcbf_food',
   );
 
+  $themes['hcbf_food_manage'] = array(
+    'variables' => array(
+      'all_food' => NULL,
+      'food' => NULL,
+    ),
+    'template' => 'templates/hcbf_food_manage',
+  );
+
   return $themes;
 }
 
+/**
+ * Implements hook_entity_update()
+ */
+function hcbf_food_entity_update($entity, $type) {
+  if (isset($entity->type)) {
+    if ($entity->type == 'hcbf_food') {
+      cache_clear_all('hcbf_food_current', 'cache', TRUE);
+      drupal_set_message(t('Cleared food vendor cache.'));
+    }
+  }
+}
+
+/**
+ * Gets all of the food vendors.
+ */
+function hcbf_food_all() {
+  $key = __FUNCTION__;
+  $vendor_data = &drupal_static(__FUNCTION__);
+
+  $vendors = array();
+  if (!isset($vendor_data)) {
+    if ($cache = cache_get($key)) {
+      $vendors = $cache->data;
+    }
+    else {
+      $vendor_query = new EntityFieldQuery();
+      $vendor_query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'hcbf_food')
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('title', 'ASC');
+      $vendor_result = $vendor_query->execute();
+
+      if (!empty($vendor_result)) {
+        $vendor_nids = array_keys($vendor_result['node']);
+
+        foreach ($vendor_nids as $vendor_nid) {
+          $vendor_entity = entity_metadata_wrapper('node', $vendor_nid);
+
+          $vendors[] = array(
+            'nid' => $vendor_entity->nid->value(),
+            'title' => $vendor_entity->label(),
+          );
+        }
+      }
+      cache_set($key, $vendors);
+    }
+  }
+  return $vendors;
+}
+
+/**
+ * Gets the current festival vendors.
+ */
+function hcbf_food_current($festival_nid=NULL) {
+  $key = __FUNCTION__;
+
+  $current_festival = variable_get('hcbf_current_festival', 0);
+
+  // If a $festival_nid is passed, it should use that as the current year
+  // and set the cache_key accordingly.
+  if (!is_null($festival_nid) && is_int($festival_nid)) {
+    $key .= '_' . $festival_nid;
+    $current_festival = $festival_nid;
+  }
+
+  $vendor_data = &drupal_static(__FUNCTION__);
+
+  $vendors = array();
+  if (!isset($vendor_data)) {
+    if ($cache = cache_get($key)) {
+      $vendors = $cache->data;
+    }
+    else {
+      if ($current_festival != 0) {
+        $vendor_query = new EntityFieldQuery();
+        $vendor_query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'hcbf_food')
+          ->propertyCondition('status', 1)
+          ->fieldCondition('field_hcbf_food_festival', 'target_id', $current_festival, '=')
+          ->propertyOrderBy('title', 'ASC');
+        $vendor_result = $vendor_query->execute();
+
+        if (!empty($vendor_result)) {
+          $vendor_nids = array_keys($vendor_result['node']);
+
+          foreach ($vendor_nids as $vendor_nid) {
+            $vendor_entity = entity_metadata_wrapper('node', $vendor_nid);
+
+            $vendors[] = array(
+              'nid' => $vendor_entity->nid->value(),
+              'title' => $vendor_entity->label(),
+              'image' => '<img src=' . image_style_url('medium', $vendor_entity->field_hcbf_food_image->value()['uri']) . ' class="img-responsive center-block" />',
+              'description' => $vendor_entity->field_hcbf_food_description->value(),
+              'link' => $vendor_entity->field_hcbf_food_website->url->value(),
+            );
+          }
+        }
+      }
+      cache_set($key, $vendors);
+    }
+  }
+
+  return $vendors;
+}

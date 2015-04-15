@@ -14,6 +14,9 @@ function hcbf_sponsors_manage() {
   if ($sponsors) {
     $theme_args['sponsors'] = $sponsors;
   }
+  else {
+    drupal_set_message(t('There are no sponsors registered for this year\'s festival.'), 'warning');
+  }
 
   $all_sponsors = hcbf_sponsors_all();
   if ($all_sponsors) {
