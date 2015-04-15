@@ -10,6 +10,11 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-lg-8">
         <div class="container-fluid">
+
+          <?php if (empty($bands)): ?>
+            <h1>We're announcing music soon!</h1>
+          <?php endif; ?>
+
           <?php foreach ($bands as $band) { ?>
             <div class="row">
               <div class="col-xs-12">
@@ -26,6 +31,7 @@
               </div>
             </div>
           <?php }; ?>
+
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-4">

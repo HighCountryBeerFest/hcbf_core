@@ -50,14 +50,6 @@ function hcbf_sponsors_menu() {
     'file' => 'hcbf_sponsors.pages.inc'
   );
 
-  $items['sponsors/register'] = array(
-    'title' => t('Register as a sponsor'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('hcbf_sponsors_registration_form'),
-    'access arguments' => array('access sponsors registration'),
-    'file' => 'hcbf_sponsors.forms.inc'
-  );
-
   return $items;
 }
 
@@ -69,10 +61,7 @@ function hcbf_sponsors_theme() {
 
   $themes['hcbf_sponsors'] = array(
     'variables' => array(
-      'level_4_sponsors' => NULL,
-      'level_3_sponsors' => NULL,
-      'level_2_sponsors' => NULL,
-      'level_1_sponsors' => NULL,
+      'sponsors' => NULL,
     ),
     'template' => 'templates/hcbf_sponsors',
   );
@@ -86,12 +75,60 @@ function hcbf_sponsors_theme() {
 
   $themes['hcbf_sponsors_manage'] = array(
     'variables' => array(
+      'all_sponsors' => NULL,
       'sponsors' => NULL,
     ),
     'template' => 'templates/hcbf_sponsors_manage',
   );
 
   return $themes;
+}
+
+/**
+ * Implements hook_entity_update()
+ */
+function hcbf_sponsors_entity_update($entity, $type) {
+  if (isset($entity->type)) {
+    if ($entity->type == 'hcbf_sponsor') {
+      cache_clear_all('hcbf_sponsors_current', 'cache', TRUE);
+      drupal_set_message(t('Cleared sponsor cache.'));
+    }
+  }
+}
+
+/**
+ * Gets all of the sponsors.
+ */
+function hcbf_sponsors_all() {
+  $key = __FUNCTION__;
+  $sponsor_data = &drupal_static($key);
+
+  $sponsors = array();
+  if (!isset($sponsor_data)) {
+    if ($cache = cache_get($key)) {
+      $sponsors = $cache->data;
+    }
+    else {
+      $sponsor_query = new EntityFieldQuery();
+      $sponsor_query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'hcbf_sponsor')
+        ->propertyCondition('status', 1)
+        ->fieldOrderBy('field_hcbf_sponsor_sponsor_level', 'value', 'DESC');
+
+      $sponsor_result = $sponsor_query->execute();
+      $sponsor_nids = array_keys($sponsor_result['node']);
+
+      foreach ($sponsor_nids as $sponsor_nid) {
+        $sponsor_entity = entity_metadata_wrapper('node', $sponsor_nid);
+        $sponsors[$sponsor_entity->field_hcbf_sponsor_sponsor_level->label()][] = array(
+          'nid' => $sponsor_entity->nid->value(),
+          'name' => $sponsor_entity->label(),
+        );
+      }
+      cache_set($key, $sponsors);
+    }
+  }
+  return $sponsors;
 }
 
 /**
@@ -114,15 +151,19 @@ function hcbf_sponsors_current() {
           ->entityCondition('bundle', 'hcbf_sponsor')
           ->propertyCondition('status', 1)
           ->fieldCondition('field_hcbf_sponsor_festival', 'target_id', $current_festival, '=')
-          ->propertyOrderBy('created', 'DESC');
+          ->fieldOrderBy('field_hcbf_sponsor_sponsor_level', 'value', 'DESC');
 
         $sponsor_result = $sponsor_query->execute();
         $sponsor_nids = array_keys($sponsor_result['node']);
 
         foreach ($sponsor_nids as $sponsor_nid) {
           $sponsor_entity = entity_metadata_wrapper('node', $sponsor_nid);
-          $sponsors[] = array(
+
+          $sponsors[$sponsor_entity->field_hcbf_sponsor_sponsor_level->label()][] = array(
+            'nid' => $sponsor_entity->nid->value(),
             'name' => $sponsor_entity->label(),
+            'logo' => '<img src=' . image_style_url('medium', $sponsor_entity->field_hcbf_sponsor_image->value()['uri']) . ' title="' . $sponsor_entity->label(). '" class="img-responsive center-block" />',
+            'link' => $sponsor_entity->field_hcbf_sponsor_sponsor_url->url->value(),
           );
         }
       }
