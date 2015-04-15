@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <h1>Join us on August 29<sup>th</sup>, 2015 for 8<sup>th</sup> annual High Country Beer Fest in Boone, NC.</h1>
+        <h1>Join us on August 29<sup>th</sup>, 2015 for the 8<sup>th</sup> annual High Country Beer Fest in Boone, NC.</h1>
         <p class="lead">Check back later for more information.</p>
       </div>
     </div>
