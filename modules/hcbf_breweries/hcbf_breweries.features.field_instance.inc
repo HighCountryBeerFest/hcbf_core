@@ -50,47 +50,6 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_accepted'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_accepted'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => array(
-      0 => array(
-        'value' => 'no',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_accepted',
-    'label' => 'Accepted',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 23,
-    ),
-  );
-
   // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_beers'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_beers'] = array(
     'bundle' => 'hcbf_brewery',
@@ -131,7 +90,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_brewery_addy1'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_brewery_addy1'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_addy1'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -171,7 +131,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_brewery_addy2'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_brewery_addy2'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_addy2'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -211,7 +172,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_brewery_city'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_brewery_city'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_city'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -251,7 +213,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_brewery_state'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_brewery_state'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_state'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -723,7 +686,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_primary_email'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_primary_email'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_primary_email'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -762,7 +726,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_primary_name'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_primary_name'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_primary_name'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -802,7 +767,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_primary_phone'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_primary_phone'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_primary_phone'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -842,7 +808,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_second_email'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_second_email'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_second_email'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -921,7 +888,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_second_phone'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_second_phone'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_second_phone'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -1002,7 +970,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_staff_members'
+  // Exported field_instance:
+  // 'node-hcbf_brewery-field_hcbf_brewery_staff_members'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_staff_members'] = array(
     'bundle' => 'hcbf_brewery',
     'default_value' => NULL,
@@ -1044,7 +1013,6 @@ function hcbf_breweries_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Accepted');
   t('Additional Comments');
   t('Are you bringing your own staff to pour beer?');
   t('Brewery City');

@@ -34,34 +34,6 @@ function hcbf_breweries_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_hcbf_brewery_accepted'
-  $field_bases['field_hcbf_brewery_accepted'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_hcbf_brewery_accepted',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'no' => 'No',
-        'yes' => 'Yes',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_hcbf_brewery_beers'
   $field_bases['field_hcbf_brewery_beers'] = array(
     'active' => 1,

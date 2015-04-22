@@ -1,3 +1,10 @@
+<?php
+/**
+ * @file
+ *   Page template for the About page.
+ */
+?>
+
 <div class="jumbotron">
   <div class="container" id="about-container">
     <div class="row">
@@ -12,7 +19,7 @@
   <div class="container" id="join-container">
     <div class="row">
       <div class="col-xs-12">
-        <h1>Join us for the 7<sup>th</sup> annual High Country Beer Fest at the High Country Fairgrounds. Sample craft beers, craft food, music, and seminars in the high country of North Carolina. Our seminars will cover aspects of beer tasting, brewing, and food pairing.</h1>
+        <h1>Join us for the 8<sup>th</sup> annual High Country Beer Fest at the High Country Fairgrounds. Sample craft beers, craft food, music, and seminars in the high country of North Carolina. Our seminars will cover aspects of beer tasting, brewing, and food pairing.</h1>
         <p class="lead">This is a 100% non-profit event. Our primary beneficiary of the event is <a href="http://fermentation.appstate.edu/" title="ASU Fermentation Sciences">ASU Fermentation Sciences</a>, but we also support other local non-profit organizations, including <a href="http://www.highcountrylocalfirst.org/" title="High Country Local First">High Country Local First</a>, <a href="http://www.highcountrymommies.com/" title="High Country Mommies">High Country Mommies</a>, <a href="http://www.middleforkgreenway.org/">Blue Ridge Conservancy-Middle Fork Greenway Association</a>, <a href="http://mountainalliance.org/">The Mountain Alliance</a>, and <a href="http://ivorytowerscience.com/" title="Ivory Tower, Inc">Ivory Tower, Inc</a>.</p>
       </div>
     </div>
@@ -24,7 +31,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="page-header">
-          <h1>We have a new location</h1>
+          <h1>Find the Fairgrounds</h1>
         </div>
       </div>
     </div>
@@ -33,7 +40,7 @@
         <div class="text-center">
           <i class="icon fa fa-map-marker fa-5x"></i>
         </div>
-        <p class="lead">This year we're expanding the Beer Fest and moving to a new location, the High Country Fairgrounds. Get ready for more music, breweries, food, and seminars!</p>
+        <p class="lead">The High Country Beer Fest will be held at the High Country Fairgrounds in Boone, North Carolina.</p>
       </div>
       <div class="col-xs-12 col-sm-8">
         <iframe

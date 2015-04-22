@@ -26,7 +26,7 @@ function hcbf_core_admin() {
 
   $form['core'] = array(
     '#type' => 'fieldset',
-    '#title' => 'HCBF core options',
+    '#title' => t('HCBF core options'),
   );
 
   $query = new EntityFieldQuery();
@@ -54,7 +54,23 @@ function hcbf_core_admin() {
     '#description' => t('Select the current festival.'),
   );
 
-  $form['core']['hcbf_core_on_sale'] = array(
+  $form['core']['hcbf_breweries_active'] = array(
+    '#type' => 'select',
+    '#title' => t('Brewery registration active'),
+    '#default_value' => variable_get('hcbf_breweries_active', 0),
+    '#options' => array(
+      0 => 'No',
+      1 => 'Yes',
+    ),
+    '#required' => TRUE,
+  );
+
+  $form['tickets'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Ticket info'),
+  );
+
+  $form['tickets']['hcbf_core_on_sale'] = array(
     '#type' => 'select',
     '#title' => t('Are tickets on sale?'),
     '#default_value' => variable_get('hcbf_core_on_sale', 0),
@@ -64,6 +80,44 @@ function hcbf_core_admin() {
     ),
     '#description' => t('Are ticketes on sale?'),
     '#required' => TRUE,
+  );
+
+  $form['tickets']['regular'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Regular tickets'),
+  );
+
+  $form['tickets']['regular']['hcbf_core_regular_ticket_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Regular ticket link'),
+    '#description' => t('Enter the URL for the regular ticket.'),
+    '#default_value' => variable_get('hcbf_core_regular_ticket_link', ''),
+  );
+
+  $form['tickets']['regular']['hcbf_core_regular_ticket_price'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Regular ticket price'),
+    '#description' => t('Enter the price for the regular ticket.'),
+    '#default_value' => variable_get('hcbf_core_regular_ticket_price', ''),
+  );
+
+  $form['tickets']['dd'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Designated driver tickets'),
+  );
+
+  $form['tickets']['dd']['hcbf_core_dd_ticket_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Designated driver ticket link'),
+    '#description' => t('Enter the URL for the designated driver ticket.'),
+    '#default_value' => variable_get('hcbf_core_dd_ticket_link', ''),
+  );
+
+  $form['tickets']['dd']['hcbf_core_dd_ticket_price'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Designated driver ticket price'),
+    '#description' => t('Enter the price for the designated driver ticket.'),
+    '#default_value' => variable_get('hcbf_core_dd_ticket_price', ''),
   );
 
   return system_settings_form($form);

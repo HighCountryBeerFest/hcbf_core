@@ -23,9 +23,9 @@
                 </div>
               </div>
 
-              <div class="row sponsors-row">
-                <?php $level_sponsors = array_chunk($level_sponsors, 2); ?>
-                <?php foreach ($level_sponsors as $sponsor): ?>
+              <?php $level_sponsors = array_chunk($level_sponsors, 2); ?>
+              <?php foreach ($level_sponsors as $sponsor): ?>
+                <div class="row sponsors-row">
                   <?php foreach ($sponsor as $s): ?>
                     <div class="col-sm-12 col-sm-6">
                       <div class="text-center">
@@ -36,8 +36,8 @@
                       </h2>
                     </div>
                   <?php endforeach; ?>
-                <?php endforeach; ?>
-              </div>
+                </div>
+              <?php endforeach; ?>
 
             <?php endforeach; ?>
           <?php endif; ?>
