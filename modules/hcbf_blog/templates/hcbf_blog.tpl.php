@@ -20,7 +20,7 @@
         <?php endif; ?>
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-4">
-        <?php print theme('hcbf_breweries_on_sale', array('classes' => 'well')); ?>
+        <?php print theme('hcbf_festival_tickets', array('classes' => 'well')); ?>
 
         <div class="well">
           <div class="page-header">

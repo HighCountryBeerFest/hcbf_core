@@ -7,6 +7,22 @@
 include_once 'hcbf_festival.features.inc';
 
 /**
+ Implements hook_theme();
+ */
+function hcbf_festival_theme() {
+  $themes = array();
+
+  $themes['hcbf_festival_tickets'] = array(
+    'variables' => array(
+      'wrapper_classes' => NULL,
+    ),
+    'template' => 'templates/hcbf_festival_tickets',
+  );
+
+  return $themes;
+}
+
+/**
  * Gets current festival entity.
  *
  * Note: The results are cached in the default drupal cache.

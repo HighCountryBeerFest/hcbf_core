@@ -49,7 +49,7 @@
             <?php print theme('hcbf_sponsor_registration', array('classes' => 'well')); ?>
           </div>
           <div class="col-sm-12 col-sm-6 col-lg-12">
-            <?php print theme('hcbf_breweries_on_sale', array('classes' => 'well')); ?>
+            <?php print theme('hcbf_festival_tickets', array('classes' => 'well')); ?>
           </div>
         </div>
       </div>
