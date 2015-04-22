@@ -29,7 +29,7 @@
       <div class="col-xs-12 col-sm-3">
         <?php //print render(hcbf_the_festivities_box()); ?>
         <hr />
-        <?php print theme('hcbf_breweries_on_sale', array('classes' => 'well')); ?>
+        <?php print theme('hcbf_festival_tickets'); ?>
       </div>
 
       <div class="col-xs-12 col-sm-9">

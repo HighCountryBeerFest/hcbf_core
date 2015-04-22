@@ -46,10 +46,10 @@
       <div class="col-sm-12 col-lg-4">
         <div class="container-fluid">
           <div class="col-sm-12 col-md-6 col-lg-12">
-            <?php print theme('hcbf_sponsor_registration', array('classes' => 'well')); ?>
+            <?php print theme('hcbf_sponsor_registration'); ?>
           </div>
           <div class="col-sm-12 col-sm-6 col-lg-12">
-            <?php print theme('hcbf_festival_tickets', array('classes' => 'well')); ?>
+            <?php print theme('hcbf_festival_tickets'); ?>
           </div>
         </div>
       </div>

@@ -20,9 +20,9 @@
         <?php endif; ?>
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-4">
-        <?php print theme('hcbf_festival_tickets', array('classes' => 'well')); ?>
+        <?php print theme('hcbf_festival_tickets'); ?>
 
-        <div class="well">
+        <div class="recent-post-wrapper">
           <div class="page-header">
             <h2 class="text-center">Recent posts</h2>
           </div>

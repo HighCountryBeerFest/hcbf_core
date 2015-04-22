@@ -32,7 +32,7 @@
       <div class="col-xs-12 col-sm-6 col-lg-4">
         <?php print theme('hcbf_breweries_registration', array()); ?>
         <p>&nbsp;</p>
-        <?php print theme('hcbf_festival_tickets', array('wrapper_classes' => 'well')); ?>
+        <?php print theme('hcbf_festival_tickets'); ?>
       </div>
     </div>
   </div>
