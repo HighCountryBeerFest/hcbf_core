@@ -101,6 +101,25 @@ function hcbf_core_admin() {
     '#default_value' => variable_get('hcbf_core_regular_ticket_price', ''),
   );
 
+  $form['tickets']['vip'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('VIP tickets'),
+  );
+
+  $form['tickets']['vip']['hcbf_core_vip_ticket_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('VIP ticket link'),
+    '#description' => t('Enter the URL for the vip ticket.'),
+    '#default_value' => variable_get('hcbf_core_vip_ticket_link', ''),
+  );
+
+  $form['tickets']['vip']['hcbf_core_vip_ticket_price'] = array(
+    '#type' => 'textfield',
+    '#title' => t('VIP ticket price'),
+    '#description' => t('Enter the price for the ticket.'),
+    '#default_value' => variable_get('hcbf_core_vip_ticket_price', ''),
+  );
+
   $form['tickets']['dd'] = array(
     '#type' => 'fieldset',
     '#title' => t('Designated driver tickets'),

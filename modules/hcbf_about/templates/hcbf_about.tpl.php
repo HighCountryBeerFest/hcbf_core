@@ -63,13 +63,9 @@
           <h1>What's your exit strategy?</h1>
         </div>
         <p>The High Country Beer Fest wants to make sure that you have a great time at the Beer Fest, but we also want to make sure you get home safely.</p>
-
         <ul>
-          <li>Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits for free.</li>
-          <li>Tipsy Taxi is providing FREE rides anywhere in Boone.</li>
-          <li>River and Earth Adventures will be providing free bus service from the Raley parking lot on campus.</li>
-          <li>The Mountain Alliance will be shuttling folks from the Country Inn and La Quinta for free.</li>
-          <li>Designated Driver Tickets are only $10.</li>
+          <li>Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits for free til 9pm the night of the event.</li>
+          <li>Tipsy Taxi has vehicles available to provide FREE rides anywhere in Boone til 9pm the night of the event.</li>
         </ul>
 
         <div class="page-header">

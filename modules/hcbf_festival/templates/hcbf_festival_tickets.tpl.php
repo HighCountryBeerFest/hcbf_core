@@ -28,6 +28,13 @@
               </a>
             </td>
           </tr>
+            <td>VIP</td>
+            <td>
+              <a href="<?php print variable_get('hcbf_core_vip_ticket_link', '#'); ?>" class="btn btn-success btn-sm">
+                $<?php print variable_get('hcbf_core_vip_ticket_price', '80.00'); ?>
+              </a>
+            </td>
+          </tr>
           <tr>
             <td>Designated Driver</td>
             <td>
