@@ -92,6 +92,7 @@ function hcbf_core_admin() {
     '#title' => t('Regular ticket link'),
     '#description' => t('Enter the URL for the regular ticket.'),
     '#default_value' => variable_get('hcbf_core_regular_ticket_link', ''),
+    '#maxlength' => 512,
   );
 
   $form['tickets']['regular']['hcbf_core_regular_ticket_price'] = array(
@@ -111,6 +112,7 @@ function hcbf_core_admin() {
     '#title' => t('VIP ticket link'),
     '#description' => t('Enter the URL for the vip ticket.'),
     '#default_value' => variable_get('hcbf_core_vip_ticket_link', ''),
+    '#maxlength' => 512,
   );
 
   $form['tickets']['vip']['hcbf_core_vip_ticket_price'] = array(
@@ -130,6 +132,7 @@ function hcbf_core_admin() {
     '#title' => t('Designated driver ticket link'),
     '#description' => t('Enter the URL for the designated driver ticket.'),
     '#default_value' => variable_get('hcbf_core_dd_ticket_link', ''),
+    '#maxlength' => 512,
   );
 
   $form['tickets']['dd']['hcbf_core_dd_ticket_price'] = array(

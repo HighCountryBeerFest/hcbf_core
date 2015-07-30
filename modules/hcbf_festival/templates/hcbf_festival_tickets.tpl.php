@@ -23,14 +23,25 @@
           <tr>
             <td>General Admission</td>
             <td>
-              <a href="<?php print variable_get('hcbf_core_regular_ticket_link', '#'); ?>" class="btn btn-success btn-sm">
+              <a href="<?php print variable_get('hcbf_core_regular_ticket_link', '#'); ?>"
+                 class="btn btn-success btn-sm"
+                 data-ga-event
+                 data-ga-category="ticket_link_click"
+                 data-ga-label="block-ticket"
+                 data-ga-action="general_admission">
                 $<?php print variable_get('hcbf_core_regular_ticket_price', '40.00'); ?>
               </a>
             </td>
           </tr>
+          <tr>
             <td>VIP</td>
             <td>
-              <a href="<?php print variable_get('hcbf_core_vip_ticket_link', '#'); ?>" class="btn btn-success btn-sm">
+              <a href="<?php print variable_get('hcbf_core_vip_ticket_link', '#'); ?>"
+                 class="btn btn-success btn-sm"
+                 data-ga-event
+                 data-ga-category="ticket_link_click"
+                 data-ga-label="block-ticket"
+                 data-ga-action="vip">
                 $<?php print variable_get('hcbf_core_vip_ticket_price', '80.00'); ?>
               </a>
             </td>
@@ -38,7 +49,12 @@
           <tr>
             <td>Designated Driver</td>
             <td>
-              <a href="<?php print variable_get('hcbf_core_dd_ticket_link', '#'); ?>" class="btn btn-success btn-sm">
+              <a href="<?php print variable_get('hcbf_core_dd_ticket_link', '#'); ?>"
+                 class="btn btn-success btn-sm"
+                 data-ga-event
+                 data-ga-category="ticket_link_click"
+                 data-ga-label="block-ticket"
+                 data-ga-action="designated_driver">
                 $<?php print variable_get('hcbf_core_dd_ticket_price', '10.00'); ?>
               </a>
             </td>

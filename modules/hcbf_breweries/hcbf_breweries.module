@@ -155,11 +155,22 @@ function hcbf_breweries_all() {
 
         foreach ($brewery_nids as $brewery_nid) {
           $brewery_entity = entity_metadata_wrapper('node', $brewery_nid);
+
+          $link = l($brewery_entity->label(),
+                    $brewery_entity->field_hcbf_brewery_brewery_url->value(),
+                    array(
+                      'attributes' => array(
+                        'data-ga-event' => array(),
+                        'data-ga-category' => array('brewery_link_click'),
+                        'data-ga-label' => 'breweries',
+                        'data-ga-action' => $brewery_entity->label(),
+                    )));
+
           $breweries[] = array(
             'name' => $brewery_entity->label(),
             'nid' => $brewery_entity->nid->value(),
             'location' => $brewery_entity->field_hcbf_brewery_brewery_city->value() . ', ' . $brewery_entity->field_hcbf_brewery_brewery_state->value(),
-            'link' => l($brewery_entity->label(), $brewery_entity->field_hcbf_brewery_brewery_url->value()),
+            'link' => $link,
             'logo' => '<img src=' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . ' class="img-responsive center-block" />',
           );
         }
@@ -208,12 +219,23 @@ function hcbf_breweries_current($festival_nid=NULL) {
 
           foreach ($brewery_nids as $brewery_nid) {
             $brewery_entity = entity_metadata_wrapper('node', $brewery_nid);
+
+            $link = l($brewery_entity->label(),
+                      $brewery_entity->field_hcbf_brewery_brewery_url->value(),
+                      array(
+                        'attributes' => array(
+                          'data-ga-event' => array(),
+                          'data-ga-category' => array('brewery_link_click'),
+                          'data-ga-label' => 'breweries',
+                          'data-ga-action' => $brewery_entity->label(),
+                      )));
+
             $breweries[] = array(
               'name' => $brewery_entity->label(),
               'nid' => $brewery_entity->nid->value(),
               'location' => $brewery_entity->field_hcbf_brewery_brewery_city->value() . ', ' . $brewery_entity->field_hcbf_brewery_brewery_state->value(),
-              'link' => l($brewery_entity->label(), $brewery_entity->field_hcbf_brewery_brewery_url->value()),
-              'logo' => '<img src=' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . ' class="img-responsive center-block" />',
+              'link' => $link,
+              'logo' => '<img src="' . image_style_url('medium', $brewery_entity->field_hcbf_brewery_logo->value()['uri']) . '" class="img-responsive center-block" />',
             );
           }
         }
@@ -222,4 +244,13 @@ function hcbf_breweries_current($festival_nid=NULL) {
     }
   }
   return $breweries;
+}
+
+/**
+ * Returns a N number list of breweries for the current year's event.
+ */
+function hcbf_breweries_random($number = 5) {
+  $breweries = hcbf_breweries_current();
+  shuffle($breweries);
+  return array_slice($breweries, 0, $number);
 }

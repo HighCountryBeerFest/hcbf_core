@@ -17,3 +17,7 @@
 #current-year-wrapper.jumbotron {
   background-color: #fff;
 }
+
+.tickets-block li {
+  font-size: 15px;
+}

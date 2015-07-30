@@ -12,7 +12,12 @@
       We'd love to have your beer! We're looking for craft breweries who want to participate in this year's High Country Beer Fest.
     </p>
     <p class="text-center">
-      <a href="/breweries/register" class="btn-success btn btn-lg">
+      <a href="/breweries/register"
+         class="btn-success btn btn-lg"
+         data-ga-event
+         data-ga-category="brewery_link_click"
+         data-ga-label="brewery"
+         data-ga-action="register">
         I'd like to register my brewery
       </a>
     </p>

@@ -64,8 +64,9 @@
         </div>
         <p>The High Country Beer Fest wants to make sure that you have a great time at the Beer Fest, but we also want to make sure you get home safely.</p>
         <ul>
-          <li>Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits for free til 9pm the night of the event.</li>
-          <li>Tipsy Taxi has vehicles available to provide FREE rides anywhere in Boone til 9pm the night of the event.</li>
+          <li><a href="http://mountainalliance.org/">Mountain Alliance</a> and <a href="http://www.raftcavehike.com/">River and Earth Adventures</a> will be provided a bus service from Raley Lot on the Appalachian State University's campus to and from the event. Buses will run from 2pm until 9pm and only stop at those two locations.</li>
+          <li>Bill's Garage will tow your vehicle and up to 4 passengers within the Boone City Limits for free until 9pm the night of the event.</li>
+          <li>Tipsy Taxi has vehicles available to provide FREE rides anywhere in Boone until 9pm the night of the event.</li>
         </ul>
 
         <div class="page-header">

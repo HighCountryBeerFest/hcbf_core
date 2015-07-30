@@ -35,7 +35,7 @@ function hcbf_music() {
       'website' => array(
         '#type' => 'markup',
         '#markup' => l(t('View website'), 
-          $band['websites'],
+          $band['website'],
           array(
             'attributes' => array(
               'class' => array('btn', 'btn-default'),

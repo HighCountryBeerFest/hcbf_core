@@ -38,8 +38,8 @@ body.page-about #join-container .lead {
   font-weight: bold;
 }
 
-body.page-about #exit-container .lead a,
-body.page-about #join-container .lead a {
+body.page-about #exit-container a,
+body.page-about #join-container a {
   color: #fff;
 }
 

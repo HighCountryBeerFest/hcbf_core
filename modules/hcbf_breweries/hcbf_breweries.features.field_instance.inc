@@ -10,168 +10,6 @@
 function hcbf_breweries_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewer_brewery_zip'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewer_brewery_zip'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewer_brewery_zip',
-    'label' => 'Brewery Zipcode',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_beers'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_beers'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 25,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_beers',
-    'label' => 'What beers do you plan to bring?',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 21,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_brewery_addy1'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_addy1'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_brewery_addy1',
-    'label' => 'Brewery address line 1',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_brewery_addy2'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_addy2'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_brewery_addy2',
-    'label' => 'Brewery address line 2',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance:
   // 'node-hcbf_brewery-field_hcbf_brewery_brewery_city'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_city'] = array(
@@ -196,7 +34,7 @@ function hcbf_breweries_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hcbf_brewery_brewery_city',
-    'label' => 'Brewery City',
+    'label' => 'City',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -209,7 +47,7 @@ function hcbf_breweries_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 2,
     ),
   );
 
@@ -217,7 +55,11 @@ function hcbf_breweries_field_default_field_instances() {
   // 'node-hcbf_brewery-field_hcbf_brewery_brewery_state'
   $field_instances['node-hcbf_brewery-field_hcbf_brewery_brewery_state'] = array(
     'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'North Carolina',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -237,7 +79,7 @@ function hcbf_breweries_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hcbf_brewery_brewery_state',
-    'label' => 'Brewery State',
+    'label' => 'State',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -250,7 +92,7 @@ function hcbf_breweries_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -277,8 +119,8 @@ function hcbf_breweries_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hcbf_brewery_brewery_url',
-    'label' => 'Brewery website',
-    'required' => 0,
+    'label' => 'Website',
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -290,7 +132,7 @@ function hcbf_breweries_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 4,
     ),
   );
 
@@ -317,7 +159,7 @@ function hcbf_breweries_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hcbf_brewery_comments',
-    'label' => 'Additional Comments',
+    'label' => 'Comments',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -330,88 +172,7 @@ function hcbf_breweries_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 22,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_deliver'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_deliver'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => array(
-      0 => array(
-        'value' => 'brewery',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 19,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_deliver',
-    'label' => 'Who will deliver your product',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_distributer'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_distributer'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 20,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_distributer',
-    'label' => 'The name of your distributor',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 7,
     ),
   );
 
@@ -454,121 +215,7 @@ function hcbf_breweries_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 31,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_hotel'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_hotel'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 23,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_hotel',
-    'label' => 'Do you need a hotel room?',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_hotel_bed'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_hotel_bed'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 30,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_hotel_bed',
-    'label' => 'Hotel Bed',
-    'required' => FALSE,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 26,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_hotel_night'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_hotel_night'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 29,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_hotel_night',
-    'label' => 'Hotel night',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 25,
+      'weight' => 6,
     ),
   );
 
@@ -598,7 +245,7 @@ function hcbf_breweries_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_hcbf_brewery_logo',
     'label' => 'Logo',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 0,
@@ -615,7 +262,13 @@ function hcbf_breweries_field_default_field_instances() {
       'module' => 'image',
       'settings' => array(
         'filefield_sources' => array(
-          'filefield_sources' => array(),
+          'filefield_sources' => array(
+            'attach' => 0,
+            'clipboard' => 0,
+            'reference' => 0,
+            'remote' => 0,
+            'upload' => 'upload',
+          ),
           'source_attach' => array(
             'absolute' => 0,
             'attach_mode' => 'move',
@@ -629,20 +282,24 @@ function hcbf_breweries_field_default_field_instances() {
           ),
         ),
         'insert' => 0,
-        'insert_absolute' => FALSE,
+        'insert_absolute' => 0,
         'insert_class' => '',
-        'insert_default' => array(
-          0 => 'auto',
-        ),
+        'insert_default' => 'auto',
         'insert_styles' => array(
-          0 => 'auto',
+          'auto' => 'auto',
+          'icon_link' => 0,
+          'image' => 0,
+          'image_large' => 0,
+          'image_medium' => 0,
+          'image_thumbnail' => 0,
+          'link' => 0,
         ),
         'insert_width' => '',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 24,
+      'weight' => 5,
     ),
   );
 
@@ -669,7 +326,7 @@ function hcbf_breweries_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_hcbf_brewery_name',
-    'label' => 'Full name of the brewery',
+    'label' => 'Name',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -686,358 +343,16 @@ function hcbf_breweries_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_primary_email'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_primary_email'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'email',
-        'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_primary_email',
-    'label' => 'Primary Contact Email',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'email',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'email_textfield',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_primary_name'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_primary_name'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_primary_name',
-    'label' => 'Primary Contact Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 9,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_primary_phone'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_primary_phone'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_primary_phone',
-    'label' => 'Primary Contact Phone Number',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_second_email'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_second_email'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'email',
-        'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 18,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_second_email',
-    'label' => 'Secondary Contact Email',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'email',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'email_textfield',
-      'weight' => 14,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_second_name'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_second_name'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_second_name',
-    'label' => 'Secondary Contact Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 12,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_second_phone'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_second_phone'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 17,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_second_phone',
-    'label' => 'Secondary Contact Phone Number',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-hcbf_brewery-field_hcbf_brewery_staff'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_staff'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 22,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_staff',
-    'label' => 'Are you bringing your own staff to pour beer?',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-hcbf_brewery-field_hcbf_brewery_staff_members'
-  $field_instances['node-hcbf_brewery-field_hcbf_brewery_staff_members'] = array(
-    'bundle' => 'hcbf_brewery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 31,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hcbf_brewery_staff_members',
-    'label' => 'Staff members',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 27,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('Additional Comments');
-  t('Are you bringing your own staff to pour beer?');
-  t('Brewery City');
-  t('Brewery State');
-  t('Brewery Zipcode');
-  t('Brewery address line 1');
-  t('Brewery address line 2');
-  t('Brewery website');
-  t('Do you need a hotel room?');
+  t('City');
+  t('Comments');
   t('Festival');
-  t('Full name of the brewery');
-  t('Hotel Bed');
-  t('Hotel night');
   t('Logo');
-  t('Primary Contact Email');
-  t('Primary Contact Name');
-  t('Primary Contact Phone Number');
-  t('Secondary Contact Email');
-  t('Secondary Contact Name');
-  t('Secondary Contact Phone Number');
-  t('Staff members');
+  t('Name');
+  t('State');
   t('The name of the brewery.');
-  t('The name of your distributor');
-  t('What beers do you plan to bring?');
-  t('Who will deliver your product');
+  t('Website');
 
   return $field_instances;
 }
